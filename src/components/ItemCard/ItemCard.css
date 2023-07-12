@@ -1,0 +1,17 @@
+.card__container {
+  margin: 0 auto;
+  border-radius: 20px;
+  position: relative;
+  border-radius: 20px;
+}
+
+.card__image {
+  max-width: 328px;
+  max-height: 328px;
+}
+
+.card__name {
+  text-align: center;
+  background-color: none;
+  margin-bottom: 0;
+}

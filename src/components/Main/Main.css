@@ -2,3 +2,14 @@
   padding: 0 20px;
   background-color: #f3f3f3;
 }
+
+.main__section-card {
+  margin-top: 20px;
+}
+
+.main__card-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}

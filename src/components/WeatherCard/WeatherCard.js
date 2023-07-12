@@ -66,16 +66,14 @@ const weatherOptions = [
   },
 ];
 
-function WeatherCard(props) {
+function WeatherCard({ isDuringDay, weatherType }) {
   const imageSrc = weatherOptions.filter((i) => {
-    console.log(i);
-    return i.isDuringDay === props.isDuringDay && i.weatherType === props.weatherType;
+    return i.isDuringDay === isDuringDay && i.weatherType === weatherType;
   });
-  console.log(imageSrc);
   const imageSrcUrl = imageSrc[0].url || "";
   return (
     <section className="weather">
-      <div className="weather__info">75F</div>
+      <div className="weather__info">75° F</div>
       <img className="weather__image" src={imageSrcUrl} alt="Sunny Day" />
     </section>
   );
