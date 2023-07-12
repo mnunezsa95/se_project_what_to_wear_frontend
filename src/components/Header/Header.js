@@ -3,7 +3,7 @@ import "./Header.css";
 import logoPath from "../../images/logo.svg";
 import avatarPath from "../../images/avatar.svg";
 
-function Header(props) {
+function Header() {
   const currentDate = new Date().toLocaleDateString("default", { month: "long", day: "numeric" });
   const username = "Marlon Nunez";
 
