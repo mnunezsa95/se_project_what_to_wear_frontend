@@ -1,14 +1,11 @@
 import React from "react";
 import "./Main.css";
-import sunnyDay from "../../images/day_sunny.svg";
+import WeatherCard from "../WeatherCard/WeatherCard";
 
 function Main() {
   return (
     <main className="main">
-      <section className="weather">
-        <div className="weather__info">75F</div>
-        <img className="weather__image" src={sunnyDay} alt="Sunny Day" />
-      </section>
+      <WeatherCard isDuringDay={false} weatherType="snow" />
     </main>
   );
 }

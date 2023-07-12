@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
-import logoPath from "../../images/logo.svg";
-import avatarPath from "../../images/avatar.svg";
+// import logoPath from "../../images/logo.svg"; // might delete
+// import avatarPath from "../../images/avatar.svg";
 
 function Header() {
   const currentDate = new Date().toLocaleDateString("default", { month: "long", day: "numeric" });
@@ -10,7 +10,7 @@ function Header() {
   return (
     <header className="header">
       <div className="header__container">
-        <img src={logoPath} alt="WTWR logo" className="header__logo" />
+        <img src={require("../../images/logo.svg").default} alt="WTWR logo" className="header__logo" />
         <p className="header__date">{currentDate}</p>
       </div>
       <div className="header__nav">
@@ -24,7 +24,7 @@ function Header() {
             <li>
               <div className="header__nav-link">
                 {username}
-                <img src={avatarPath} alt="Profile Avatar" className="header__nav-avatar"></img>
+                <img src={require("../../images/avatar.svg").default} alt="Profile Avatar" className="header__nav-avatar"></img>
               </div>
             </li>
           </ul>
