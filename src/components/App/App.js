@@ -1,8 +1,9 @@
 import React from "react";
+import "./App.css";
 import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
 import Main from "../Main/Main.js";
-import "./App.css";
+import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Header />
         <Main />
         <Footer />
+        <ModalWithForm title="New garment">These are the children</ModalWithForm>
       </div>
     </div>
   );
