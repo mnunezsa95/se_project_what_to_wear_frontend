@@ -3,7 +3,7 @@ import "./Header.css";
 // import logoPath from "../../images/logo.svg"; // might delete
 // import avatarPath from "../../images/avatar.svg";
 
-function Header() {
+function Header({ onCreateModal }) {
   const currentDate = new Date().toLocaleDateString("default", { month: "long", day: "numeric" });
   const username = "Marlon Nunez";
 
@@ -17,7 +17,7 @@ function Header() {
         <nav className="header__nav-section">
           <ul className="header__nav-container">
             <li>
-              <button className="header__nav__button" type="text">
+              <button className="header__nav__button" type="text" onClick={onCreateModal}>
                 + Add New Clothes
               </button>
             </li>
