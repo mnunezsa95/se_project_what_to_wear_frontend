@@ -1,6 +1,5 @@
 import React from "react";
 import "./WeatherCard.css";
-import sunnyFog from "../../images/day_fog.svg";
 
 const weatherOptions = [
   {
@@ -66,14 +65,14 @@ const weatherOptions = [
   },
 ];
 
-function WeatherCard({ isDuringDay, weatherType }) {
+function WeatherCard({ isDuringDay, weatherType, weatherTemp = "Unable to get Temp" }) {
   const imageSrc = weatherOptions.filter((i) => {
     return i.isDuringDay === isDuringDay && i.weatherType === weatherType;
   });
   const imageSrcUrl = imageSrc[0].url || "";
   return (
     <section className="weather">
-      <div className="weather__info">75° F</div>
+      <div className="weather__info">{weatherTemp}</div>
       <img className="weather__image" src={imageSrcUrl} alt="Sunny Day" />
     </section>
   );

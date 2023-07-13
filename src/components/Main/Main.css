@@ -4,12 +4,13 @@
 }
 
 .main__section-card {
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
-.main__card-items {
+.main__section-card-items {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  margin-top: 34px;
 }

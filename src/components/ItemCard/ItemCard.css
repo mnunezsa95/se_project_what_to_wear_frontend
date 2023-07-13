@@ -1,17 +1,27 @@
 .card__container {
-  margin: 0 auto;
-  border-radius: 20px;
   position: relative;
-  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .card__image {
   max-width: 328px;
   max-height: 328px;
+  border-radius: 20px;
 }
 
 .card__name {
+  margin: 0 auto;
   text-align: center;
-  background-color: none;
-  margin-bottom: 0;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.2;
+  color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 16px;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 2px 12px;
 }
