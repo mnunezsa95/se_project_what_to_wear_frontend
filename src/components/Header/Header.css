@@ -4,13 +4,11 @@
 }
 
 .header {
-  background-color: #f3f3f3;
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height: 60px;
   margin: 0 auto;
-  padding: 0 20px;
   font-family: "Cabinet Grotesk", sans-serif;
   font-size: 20px;
   font-weight: 700;

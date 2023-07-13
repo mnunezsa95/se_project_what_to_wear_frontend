@@ -3,6 +3,8 @@
   overflow: hidden;
   display: flex;
   justify-content: center;
+  width: 310px;
+  height: 310px;
 }
 
 .card__image {
@@ -21,7 +23,6 @@
   color: rgba(0, 0, 0, 0.6);
   position: absolute;
   top: 16px;
-  background-color: #fff;
   border-radius: 4px;
   padding: 2px 12px;
 }
