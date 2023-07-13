@@ -30,16 +30,47 @@
   flex-direction: column;
 }
 
-.form__container-selections {
-  font-family: "Cabinet Grotesk", sans-serif;
-}
-
-.form__input {
-  font-family: "Cabinet Grotesk", sans-serif;
+.form__input-text {
+  font-family: "Cabinet Grotesk - Bold";
   margin-top: 8px;
   font-size: 16px;
   height: 24px;
   padding: 0;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+
+.form__container-selections {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.form__prompt {
+  font-family: "Cabinet Grotesk - Bold";
+  margin-top: 24px;
+  margin-bottom: 0;
+  font-size: 16px;
+  line-height: 1.2;
+}
+.form__input-selector {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+.form__selector-item {
+  padding-left: 11px;
+}
+
+.form__label-selector {
+  padding-left: 12px;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+:checked + label {
+  font-weight: bold;
+  color: black;
 }

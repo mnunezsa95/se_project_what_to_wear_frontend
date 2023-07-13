@@ -21,23 +21,25 @@ function App() {
             <div className="form__container-inputs">
               <label className="form__label">
                 Name
-                <input className="form__input" type="text" name="name" minLength="1" maxLength="30" required placeholder="Name"></input>
+                <input className="form__input-text" type="text" name="name" minLength="1" maxLength="30" required placeholder="Name"></input>
               </label>
               <label className="form__label">
                 Image
-                <input className="form__input" type="url" name="imageURL" minLength="1" required placeholder="Image URL"></input>
+                <input className="form__input-text" type="url" name="imageURL" minLength="1" required placeholder="Image URL"></input>
               </label>
             </div>
+            <p className="form__prompt">Select the weather type:</p>
             <div className="form__container-selections">
-              <p className="form__subheading">Select the Weather Type</p>
-              <div>
-                <div>
-                  <input className="" type="radio" id="hot" value="hot" />
-                  <label className="">
-                    <span className="form__input-item">Hot</span>
-                  </label>
-                </div>
-              </div>
+              <input className="form__input-selector" type="radio" id="hot" value="hot" />
+              <label className="form__label-selector">Hot</label>
+            </div>
+            <div className="form__container-selections">
+              <input className="form__input-selector" type="radio" id="warm" value="warm" />
+              <label className="form__label-selector">Warm</label>
+            </div>
+            <div className="form__container-selections">
+              <input className="form__input-selector" type="radio" id="cold" value="cold" />
+              <label className="form__label-selector">Cold</label>
             </div>
           </ModalWithForm>
         )}
