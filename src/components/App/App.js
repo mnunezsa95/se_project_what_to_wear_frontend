@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
 import Main from "../Main/Main.js";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
 import ItemModal from "../ItemModal/ItemModal.js";
+import { getWeatherForcast } from "../../utils/weatherAPI";
 
 function App() {
   const [activeModal, setActiveModal] = useState(false); // setting Init. modalState to false
@@ -16,6 +17,14 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
+
+  useEffect(() => {
+    getWeatherForcast().then((data) => {
+      console.log(data);
+    });
+  }, []);
+  // dependency to start only once during mounting
+
   return (
     <div className="page">
       <div className="page__wrapper">
