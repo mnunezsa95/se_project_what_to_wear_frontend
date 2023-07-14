@@ -5,9 +5,10 @@ import Footer from "../Footer/Footer.js";
 import Main from "../Main/Main.js";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
 import ItemModal from "../ItemModal/ItemModal.js";
-import { getWeatherForcast } from "../../utils/weatherAPI";
+import { getWeatherForcast, getWeatherData } from "../../utils/weatherAPI";
 
 function App() {
+  const [temp, setTemp] = useState(0);
   const [activeModal, setActiveModal] = useState(false); // setting Init. modalState to false
   const handleCreateModal = () => setActiveModal(true); // function for opening modal
   const handleCloseModal = () => setActiveModal(false); // function for closing modal
@@ -20,16 +21,16 @@ function App() {
 
   useEffect(() => {
     getWeatherForcast().then((data) => {
-      console.log(data);
+      const tempFromAPI = getWeatherData(data);
+      setTemp(tempFromAPI);
     });
-  }, []);
-  // dependency to start only once during mounting
+  }, []); // dependency to start only once during mounting
 
   return (
     <div className="page">
       <div className="page__wrapper">
         <Header onCreateModal={handleCreateModal} />
-        <Main onSelectCard={handleSelectedCard} />
+        <Main onSelectCard={handleSelectedCard} weatherTemp={temp} />
         <Footer />
         {activeModal === true && (
           <ModalWithForm title="New garment" onClose={handleCloseModal}>

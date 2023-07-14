@@ -72,7 +72,7 @@ function WeatherCard({ isDuringDay, weatherType, weatherTemp = "Unable to get Te
   const imageSrcUrl = imageSrc[0].url || "";
   return (
     <section className="weather">
-      <div className="weather__info">{weatherTemp}</div>
+      <div className="weather__info">{weatherTemp}° F</div>
       <img className="weather__image" src={imageSrcUrl} alt="Sunny Day" />
     </section>
   );
