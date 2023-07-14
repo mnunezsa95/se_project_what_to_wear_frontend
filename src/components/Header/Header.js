@@ -1,7 +1,5 @@
 import React from "react";
 import "./Header.css";
-// import logoPath from "../../images/logo.svg"; // might delete
-// import avatarPath from "../../images/avatar.svg";
 
 function Header({ onCreateModal }) {
   const currentDate = new Date().toLocaleDateString("default", { month: "long", day: "numeric" });
@@ -32,30 +30,6 @@ function Header({ onCreateModal }) {
       </div>
     </header>
   );
-
-  //   return (
-  //     <div>
-  //       <header className="header">
-  //         <div className="header__container">
-  //           <div>
-  //             <img src={logoPath} alt="WTWR Logo"></img>
-  //           </div>
-  //           <p>{currentDate}</p>
-  //         </div>
-  //         <div className="header__avatar">
-  //           <div>
-  //             <button className="header__nav__button" type="text">
-  //               +Add New Clothes
-  //             </button>
-  //           </div>
-  //           <div>{username}</div>
-  //           <div>
-  //             <img src={avatarPath} alt="Profile Avatar"></img>
-  //           </div>
-  //         </div>
-  //       </header>
-  //     </div>
-  //   );
 }
 
 export default Header;

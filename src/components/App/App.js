@@ -4,17 +4,23 @@ import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
 import Main from "../Main/Main.js";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
+import ItemModal from "../ItemModal/ItemModal.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState(false); // setting Init. modalState to false
   const handleCreateModal = () => setActiveModal(true); // function for opening modal
   const handleCloseModal = () => setActiveModal(false); // function for closing modal
 
+  const [selectedCard, setSelectedCard] = useState({}); // setting initial state
+  const handleSelectedCard = (card) => {
+    setActiveModal("preview");
+    setSelectedCard(card);
+  };
   return (
     <div className="page">
       <div className="page__wrapper">
         <Header onCreateModal={handleCreateModal} />
-        <Main />
+        <Main onSelectCard={handleSelectedCard} />
         <Footer />
         {activeModal === true && (
           <ModalWithForm title="New garment" onClose={handleCloseModal}>
@@ -44,6 +50,7 @@ function App() {
           </ModalWithForm>
         )}
       </div>
+      {activeModal === "preview" && <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />}
     </div>
   );
 }
