@@ -5,11 +5,11 @@ import Footer from "../Footer/Footer.js";
 import Main from "../Main/Main.js";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
 import ItemModal from "../ItemModal/ItemModal.js";
-import { getWeatherForcast, getWeatherData, getCurrentCity } from "../../utils/weatherAPI";
+import { getWeatherForcast, getWeatherData, getLocationData } from "../../utils/weatherAPI";
 
 function App() {
   const [temp, setTemp] = useState(0);
-  const [city, setCity] = useState("");
+  const [location, setLocation] = useState("Location N/A");
 
   const [activeModal, setActiveModal] = useState(false); // setting Init. modalState to false
   const [selectedCard, setSelectedCard] = useState({}); // setting initial state
@@ -25,20 +25,15 @@ function App() {
     getWeatherForcast().then((data) => {
       const tempFromAPI = getWeatherData(data);
       setTemp(tempFromAPI);
+      const locationFromAPI = getLocationData(data.name);
+      setLocation(locationFromAPI);
     });
   }, []); // dependency to start only once during mounting
-
-  useEffect(() => {
-    getWeatherForcast().then((data) => {
-      const cityFromAPI = getCurrentCity(data.name);
-      setCity(cityFromAPI);
-    });
-  }, []);
 
   return (
     <div className="page">
       <div className="page__wrapper">
-        <Header onCreateModal={handleCreateModal} currentCity={city} />
+        <Header onCreateModal={handleCreateModal} currentLocation={location} />
         <Main onSelectCard={handleSelectedCard} weatherTemp={temp} />
         <Footer />
         {activeModal === true && (

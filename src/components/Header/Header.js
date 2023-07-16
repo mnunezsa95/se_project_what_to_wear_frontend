@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 
-function Header({ onCreateModal, currentCity }) {
+function Header({ onCreateModal, currentLocation }) {
   const currentDate = new Date().toLocaleDateString("default", { month: "long", day: "numeric" });
   const username = "Marlon Nunez";
 
@@ -10,7 +10,7 @@ function Header({ onCreateModal, currentCity }) {
       <div className="header__container">
         <img src={require("../../images/logo.svg").default} alt="WTWR logo" className="header__logo" />
         <p className="header__date">{currentDate}</p>
-        <p className="header__city">{currentCity}</p>
+        <p className="header__city">{currentLocation}</p>
       </div>
       <div className="header__nav">
         <nav className="header__nav-section">

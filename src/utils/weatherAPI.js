@@ -21,7 +21,7 @@ export function getWeatherData(data) {
   return Math.ceil(temperature);
 }
 
-export function getCurrentCity(data) {
+export function getLocationData(data) {
   const cityName = data.name; // gets city name for future projects
   return cityName;
 }

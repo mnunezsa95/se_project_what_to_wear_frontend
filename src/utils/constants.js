@@ -36,3 +36,67 @@ export const defaultClothingItems = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4",
   },
 ];
+
+export const weatherOptions = [
+  {
+    url: require("../../src/images/day_clear.svg").default,
+    isDuringDay: true,
+    weatherType: "clearSky",
+  },
+  {
+    url: require("../../src/images/day_cloudy.svg").default,
+    isDuringDay: true,
+    weatherType: "cloudy",
+  },
+  {
+    url: require("../../src/images/day_rain.svg").default,
+    isDuringDay: true,
+    weatherType: "rain",
+  },
+  {
+    url: require("../../src/images/day_storm.svg").default,
+    isDuringDay: true,
+    weatherType: "storm",
+  },
+  {
+    url: require("../../src/images/day_snow.svg").default,
+    isDuringDay: true,
+    weatherType: "snow",
+  },
+  {
+    url: require("../../src/images/day_fog.svg").default,
+    isDuringDay: true,
+    weatherType: "fog",
+  },
+  // Night starts below
+  {
+    url: require("../../src/images/night_clear.svg").default,
+    isDuringDay: false,
+    weatherType: "clearSky",
+  },
+  {
+    url: require("../../src/images/night_cloudy.svg").default,
+    isDuringDay: false,
+    weatherType: "cloudy",
+  },
+  {
+    url: require("../../src/images/night_rain.svg").default,
+    isDuringDay: false,
+    weatherType: "rain",
+  },
+  {
+    url: require("../../src/images/night_storm.svg").default,
+    isDuringDay: false,
+    weatherType: "storm",
+  },
+  {
+    url: require("../../src/images/night_snow.svg").default,
+    isDuringDay: false,
+    weatherType: "snow",
+  },
+  {
+    url: require("../../src/images/night_fog.svg").default,
+    isDuringDay: false,
+    weatherType: "fog",
+  },
+];
