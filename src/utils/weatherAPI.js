@@ -18,5 +18,16 @@ export const getWeatherForcast = () => {
 export function getWeatherData(data) {
   const main = data.main;
   const temperature = main && main.temp;
+  const cityName = data.name; // gets city name for future projects
   return Math.ceil(temperature);
+}
+
+export function getWeatherType(temperature) {
+  if (temperature >= 86) {
+    return "hot";
+  } else if (temperature >= 66 && temperature <= 85) {
+    return "warm";
+  } else if (temperature <= 65) {
+    return "cold";
+  }
 }
