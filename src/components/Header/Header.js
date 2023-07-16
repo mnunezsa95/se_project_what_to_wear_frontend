@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 
-function Header({ onCreateModal, currentLocation }) {
+function Header({ onCreateModal, currentLocation = "Location N/A" }) {
   const currentDate = new Date().toLocaleDateString("default", { month: "long", day: "numeric" });
   const username = "Marlon Nunez";
 

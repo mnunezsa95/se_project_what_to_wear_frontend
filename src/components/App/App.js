@@ -9,7 +9,7 @@ import { getWeatherForcast, getWeatherData, getLocationData } from "../../utils/
 
 function App() {
   const [temp, setTemp] = useState(0);
-  const [location, setLocation] = useState("Location N/A");
+  const [location, setLocation] = useState("");
 
   const [activeModal, setActiveModal] = useState(false); // setting Init. modalState to false
   const [selectedCard, setSelectedCard] = useState({}); // setting initial state
