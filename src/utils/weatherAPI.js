@@ -22,8 +22,7 @@ export function getWeatherData(data) {
 }
 
 export function getLocationData(data) {
-  const cityName = data.name; // gets city name for future projects
-  return cityName;
+  return data.name; // gets city name for future projects
 }
 
 export function getWeatherType(temperature) {

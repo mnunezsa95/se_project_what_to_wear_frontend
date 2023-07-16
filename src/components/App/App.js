@@ -25,8 +25,9 @@ function App() {
     getWeatherForcast().then((data) => {
       const tempFromAPI = getWeatherData(data);
       setTemp(tempFromAPI);
-      const locationFromAPI = getLocationData(data.name);
+      const locationFromAPI = getLocationData(data);
       setLocation(locationFromAPI);
+      console.log(data.name);
     });
   }, []); // dependency to start only once during mounting
 
