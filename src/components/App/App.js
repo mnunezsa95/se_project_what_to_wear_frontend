@@ -5,15 +5,17 @@ import Footer from "../Footer/Footer.js";
 import Main from "../Main/Main.js";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
 import ItemModal from "../ItemModal/ItemModal.js";
-import { getWeatherForcast, getWeatherData } from "../../utils/weatherAPI";
+import { getWeatherForcast, getWeatherData, getCurrentCity } from "../../utils/weatherAPI";
 
 function App() {
   const [temp, setTemp] = useState(0);
+  const [city, setCity] = useState("");
+
   const [activeModal, setActiveModal] = useState(false); // setting Init. modalState to false
+  const [selectedCard, setSelectedCard] = useState({}); // setting initial state
+
   const handleCreateModal = () => setActiveModal(true); // function for opening modal
   const handleCloseModal = () => setActiveModal(false); // function for closing modal
-
-  const [selectedCard, setSelectedCard] = useState({}); // setting initial state
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
@@ -26,10 +28,17 @@ function App() {
     });
   }, []); // dependency to start only once during mounting
 
+  useEffect(() => {
+    getWeatherForcast().then((data) => {
+      const cityFromAPI = getCurrentCity(data.name);
+      setCity(cityFromAPI);
+    });
+  }, []);
+
   return (
     <div className="page">
       <div className="page__wrapper">
-        <Header onCreateModal={handleCreateModal} />
+        <Header onCreateModal={handleCreateModal} currentCity={city} />
         <Main onSelectCard={handleSelectedCard} weatherTemp={temp} />
         <Footer />
         {activeModal === true && (

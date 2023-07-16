@@ -18,8 +18,12 @@ export const getWeatherForcast = () => {
 export function getWeatherData(data) {
   const main = data.main;
   const temperature = main && main.temp;
-  const cityName = data.name; // gets city name for future projects
   return Math.ceil(temperature);
+}
+
+export function getCurrentCity(data) {
+  const cityName = data.name; // gets city name for future projects
+  return cityName;
 }
 
 export function getWeatherType(temperature) {
