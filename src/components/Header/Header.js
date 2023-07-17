@@ -8,7 +8,7 @@ function Header({ onCreateModal, currentLocation = "Location N/A" }) {
   return (
     <header className="header">
       <div className="header__container">
-        <img src={require("../../images/logo2.svg").default} alt="WTWR logo" className="header__logo" />
+        <img src={require("../../images/logo.svg").default} alt="WTWR logo" className="header__logo" />
         <p className="header__date">{currentDate}</p>
         <p className="header__city">{currentLocation}</p>
       </div>
