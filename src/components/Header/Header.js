@@ -1,5 +1,7 @@
 import React from "react";
 import "./Header.css";
+import headerLogo from "../../images/logo2.svg";
+import avatarImage from "../../images/avatar.svg";
 
 function Header({ onCreateModal, currentLocation = "Location N/A" }) {
   const currentDate = new Date().toLocaleDateString("default", { month: "long", day: "numeric" });
@@ -8,7 +10,7 @@ function Header({ onCreateModal, currentLocation = "Location N/A" }) {
   return (
     <header className="header">
       <div className="header__container">
-        <img src={require("../../images/logo2.svg").default} alt="WTWR logo" className="header__logo" />
+        <img src={headerLogo} alt="WTWR logo" className="header__logo" />
         <p className="header__date">{currentDate},</p>
         <p className="header__city">{currentLocation}</p>
       </div>
@@ -23,7 +25,7 @@ function Header({ onCreateModal, currentLocation = "Location N/A" }) {
             <li>
               <div className="header__nav-link">
                 {username}
-                <img src={require("../../images/avatar.svg").default} alt="Profile Avatar" className="header__nav-avatar"></img>
+                <img src={avatarImage} alt="Profile Avatar" className="header__nav-avatar"></img>
               </div>
             </li>
           </ul>
