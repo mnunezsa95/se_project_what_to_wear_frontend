@@ -22,12 +22,14 @@ function App() {
   };
 
   useEffect(() => {
-    getWeatherForcast().then((data) => {
-      const tempFromAPI = getWeatherData(data);
-      setTemp(tempFromAPI);
-      const locationFromAPI = getLocationData(data);
-      setLocation(locationFromAPI);
-    });
+    getWeatherForcast()
+      .then((data) => {
+        const tempFromAPI = getWeatherData(data);
+        setTemp(tempFromAPI);
+        const locationFromAPI = getLocationData(data);
+        setLocation(locationFromAPI);
+      })
+      .catch((err) => console.error(err));
   }, []); // dependency to start only once during mounting
 
   return (
@@ -41,11 +43,11 @@ function App() {
             <div className="form__container-inputs">
               <label className="form__label">
                 Name
-                <input className="form__input-text" type="text" name="name" minLength="1" maxLength="30" required placeholder="Name"></input>
+                <input className="form__input-text" type="text" name="name" minLength="1" maxLength="30" required placeholder="Name" />
               </label>
               <label className="form__label">
                 Image
-                <input className="form__input-text" type="url" name="imageURL" minLength="1" required placeholder="Image URL"></input>
+                <input className="form__input-text" type="url" name="imageURL" minLength="1" required placeholder="Image URL" />
               </label>
             </div>
             <p className="form__prompt">Select the weather type:</p>

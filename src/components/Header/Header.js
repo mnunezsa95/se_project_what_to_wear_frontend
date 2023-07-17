@@ -25,7 +25,7 @@ function Header({ onCreateModal, currentLocation = "Location N/A" }) {
             <li>
               <div className="header__nav-link">
                 {username}
-                <img src={avatarImage} alt="Profile Avatar" className="header__nav-avatar"></img>
+                <img src={avatarImage} alt="Profile Avatar" className="header__nav-avatar" />
               </div>
             </li>
           </ul>
