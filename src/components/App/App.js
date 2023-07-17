@@ -11,11 +11,11 @@ function App() {
   const [temp, setTemp] = useState(0);
   const [location, setLocation] = useState("");
 
-  const [activeModal, setActiveModal] = useState(false); // setting Init. modalState to false
+  const [activeModal, setActiveModal] = useState(null); // setting Init. modalState to false
   const [selectedCard, setSelectedCard] = useState({}); // setting initial state
 
-  const handleCreateModal = () => setActiveModal(true); // function for opening modal
-  const handleCloseModal = () => setActiveModal(false); // function for closing modal
+  const handleCreateModal = () => setActiveModal("create"); // function for opening modal
+  const handleCloseModal = () => setActiveModal(null); // function for closing modal
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
@@ -27,7 +27,6 @@ function App() {
       setTemp(tempFromAPI);
       const locationFromAPI = getLocationData(data);
       setLocation(locationFromAPI);
-      console.log(data.name);
     });
   }, []); // dependency to start only once during mounting
 
@@ -37,7 +36,7 @@ function App() {
         <Header onCreateModal={handleCreateModal} currentLocation={location} />
         <Main onSelectCard={handleSelectedCard} weatherTemp={temp} />
         <Footer />
-        {activeModal === true && (
+        {activeModal === "create" && (
           <ModalWithForm title="New garment" onClose={handleCloseModal}>
             <div className="form__container-inputs">
               <label className="form__label">
