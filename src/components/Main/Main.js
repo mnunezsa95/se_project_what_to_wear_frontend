@@ -5,14 +5,14 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import { getWeatherType } from "../../utils/weatherAPI";
 
-function Main({ onSelectCard, weatherTemp, groupId }) {
+function Main({ onSelectCard, weatherTemp, weatherId }) {
   // const weatherType = getWeatherType(weatherTemp); // could do it this way, but would add more variables
   const filteredCards = defaultClothingItems.filter((item) => {
     return item.weather.toLowerCase() === getWeatherType(weatherTemp);
   });
   return (
     <main className="main">
-      <WeatherCard isDuringDay={false} weatherType="snow" weatherTemp={weatherTemp} groupId={groupId} />
+      <WeatherCard isDuringDay={false} weatherType="snow" weatherTemp={weatherTemp} weatherId={weatherId} />
       <section className="main__section-card">
         Today is {weatherTemp}° F / You may want to wear:
         <div className="main__section-card-items">

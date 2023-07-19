@@ -2,11 +2,11 @@ import React from "react";
 import "./WeatherCard.css";
 import { weatherOptions } from "../../utils/constants.js";
 
-function WeatherCard({ weatherTemp = "Tempature N/A", groupId }) {
+function WeatherCard({ weatherTemp = "Tempature N/A", weatherId }) {
   const imageSrc = weatherOptions.filter((i) => {
-    const imageGroupId = i.groupId && i?.groupId.toString().charAt(0);
-    const apiGroupId = groupId.toString().charAt(0);
-    return i.groupId === groupId || imageGroupId === apiGroupId;
+    const imageGroupId = i.weatherId && i?.weatherId.toString().charAt(0);
+    const apiGroupId = weatherId.toString().charAt(0);
+    return i.weatherId === weatherId || imageGroupId === apiGroupId;
   });
 
   const imageSrcUrl = imageSrc[0].url || "";

@@ -21,11 +21,11 @@ export function getWeatherData(data) {
   return Math.ceil(temperature);
 }
 
-export function getGroupId(data) {
-  const groupIdArray = data.weather.map((item) => {
+export function getWeatherId(data) {
+  const weatherIdArray = data.weather.map((item) => {
     return item.id;
   });
-  return groupIdArray.length > 0 ? groupIdArray[0] : 800;
+  return weatherIdArray.length > 0 ? weatherIdArray[0] : 800;
 }
 
 export function getLocationData(data) {

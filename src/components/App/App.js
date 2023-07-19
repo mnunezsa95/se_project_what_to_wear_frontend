@@ -5,12 +5,12 @@ import Footer from "../Footer/Footer.js";
 import Main from "../Main/Main.js";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
 import ItemModal from "../ItemModal/ItemModal.js";
-import { getWeatherForcast, getWeatherData, getLocationData, getGroupId } from "../../utils/weatherAPI";
+import { getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from "../../utils/weatherAPI";
 
 function App() {
   const [temp, setTemp] = useState(0);
   const [location, setLocation] = useState("");
-  const [groupId, setGroupId] = useState(800);
+  const [weatherId, setweatherId] = useState(800);
 
   const [activeModal, setActiveModal] = useState(null); // setting Init. modalState to false
   const [selectedCard, setSelectedCard] = useState({}); // setting initial state
@@ -29,7 +29,7 @@ function App() {
         setTemp(tempFromAPI);
         const locationFromAPI = getLocationData(data);
         setLocation(locationFromAPI);
-        setGroupId(getGroupId(data));
+        setweatherId(getWeatherId(data));
       })
       .catch((err) => console.error(err));
   }, []); // dependency to start only once during mounting
@@ -38,7 +38,7 @@ function App() {
     <div className="page">
       <div className="page__wrapper">
         <Header onCreateModal={handleCreateModal} currentLocation={location} />
-        <Main onSelectCard={handleSelectedCard} weatherTemp={temp} groupId={groupId} />
+        <Main onSelectCard={handleSelectedCard} weatherTemp={temp} weatherId={weatherId} />
         <Footer />
         {activeModal === "create" && (
           <ModalWithForm title="New garment" onClose={handleCloseModal}>
