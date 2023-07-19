@@ -21,8 +21,15 @@ export function getWeatherData(data) {
   return Math.ceil(temperature);
 }
 
+export function getGroupId(data) {
+  const groupIdArray = data.weather.map((item) => {
+    return item.id;
+  });
+  return groupIdArray.length > 0 ? groupIdArray[0] : 800;
+}
+
 export function getLocationData(data) {
-  return data.name; // gets city name for future projects
+  return data.name;
 }
 
 export function getWeatherType(temperature) {
