@@ -32,7 +32,7 @@ export function getLocationData(data) {
   return data.name;
 }
 
-export function getWeatherType(temperature) {
+export function getWeatherTempRange(temperature) {
   if (temperature >= 86) {
     return "hot";
   } else if (temperature >= 66 && temperature <= 85) {
