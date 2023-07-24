@@ -12,6 +12,7 @@ function App() {
   const [location, setLocation] = useState("");
   const [weatherId, setweatherId] = useState(800);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+
   const [activeModal, setActiveModal] = useState(null); // setting Init. modalState to false
   const [selectedCard, setSelectedCard] = useState({}); // setting initial state
 
@@ -20,6 +21,9 @@ function App() {
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
+  };
+  const handleToggleSwitchChange = () => {
+    currentTemperatureUnit === "C" ? handleToggleSwitchChange("F") : handleToggleSwitchChange("C");
   };
 
   useEffect(() => {
