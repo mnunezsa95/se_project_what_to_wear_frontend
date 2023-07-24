@@ -11,7 +11,7 @@ function App() {
   const [temp, setTemp] = useState(0);
   const [location, setLocation] = useState("");
   const [weatherId, setweatherId] = useState(800);
-
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [activeModal, setActiveModal] = useState(null); // setting Init. modalState to false
   const [selectedCard, setSelectedCard] = useState({}); // setting initial state
 
