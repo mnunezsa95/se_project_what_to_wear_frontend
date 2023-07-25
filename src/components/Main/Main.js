@@ -10,7 +10,7 @@ function Main({ onSelectCard, weatherTemp, weatherId }) {
   const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || "";
   const filteredCards = defaultClothingItems.filter((item) => {
-    return item.weather.toLowerCase() === getWeatherTempRange(weatherTemp);
+    return item.weather.toLowerCase() === getWeatherTempRange(temp, currentTemperatureUnit);
   });
   return (
     <main className="main">

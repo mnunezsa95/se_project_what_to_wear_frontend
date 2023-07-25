@@ -37,6 +37,7 @@ function App() {
       })
       .catch((err) => console.error(err));
   }, []); // dependency to start only once during mounting
+
   return (
     <div className="page">
       <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>

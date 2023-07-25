@@ -28,13 +28,23 @@ export function getWeatherData(data) {
   return weather;
 }
 
-export function getWeatherTempRange(temperature) {
-  if (temperature >= 86) {
-    return "hot";
-  } else if (temperature >= 66 && temperature <= 85) {
-    return "warm";
-  } else if (temperature <= 65) {
-    return "cold";
+export function getWeatherTempRange(temperature, currentTempatureUnit) {
+  if (currentTempatureUnit === "F") {
+    if (temperature >= 86) {
+      return "hot";
+    } else if (temperature >= 66 && temperature <= 85) {
+      return "warm";
+    } else if (temperature <= 65) {
+      return "cold";
+    }
+  } else {
+    if (temperature >= Math.round(86 - 32) * (5 / 9)) {
+      return "hot";
+    } else if (temperature >= (Math.round(66 - 32) * (5 / 9) && temperature <= Math.round(85 - 32 * (5 / 9)))) {
+      return "warm";
+    } else if (temperature <= Math.round(65 - 32) * (5 / 9)) {
+      return "cold";
+    }
   }
 }
 
