@@ -18,7 +18,24 @@ export const getWeatherForcast = () => {
 export function getWeatherData(data) {
   const main = data.main;
   const temperature = main && main.temp;
+  const weather = {
+    temperature: {
+      F: `${Math.round(temperature)}°F`,
+      C: `${Math.round((temperature - 32) * (5 / 9))}°C`,
+    },
+  };
+
   return Math.ceil(temperature);
+}
+
+export function getWeatherTempRange(temperature) {
+  if (temperature >= 86) {
+    return "hot";
+  } else if (temperature >= 66 && temperature <= 85) {
+    return "warm";
+  } else if (temperature <= 65) {
+    return "cold";
+  }
 }
 
 export function getWeatherId(data) {
@@ -30,14 +47,4 @@ export function getWeatherId(data) {
 
 export function getLocationData(data) {
   return data.name;
-}
-
-export function getWeatherTempRange(temperature) {
-  if (temperature >= 86) {
-    return "hot";
-  } else if (temperature >= 66 && temperature <= 85) {
-    return "warm";
-  } else if (temperature <= 65) {
-    return "cold";
-  }
 }

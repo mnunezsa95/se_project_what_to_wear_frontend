@@ -15,10 +15,10 @@ function Header({ onCreateModal, currentLocation = "Location N/A" }) {
         <p className="header__date">{currentDate},</p>
         <p className="header__city">{currentLocation}</p>
       </div>
-      <ToggleSwitch />
       <div className="header__nav">
         <nav className="header__nav-section">
           <ul className="header__nav-container">
+            <ToggleSwitch />
             <li>
               <button className="header__nav__button" type="text" onClick={onCreateModal}>
                 + Add New Clothes
