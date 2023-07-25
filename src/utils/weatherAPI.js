@@ -20,12 +20,12 @@ export function getWeatherData(data) {
   const temperature = main && main.temp;
   const weather = {
     temperature: {
-      F: `${Math.round(temperature)}°F`,
-      C: `${Math.round((temperature - 32) * (5 / 9))}°C`,
+      F: Math.round(temperature),
+      C: Math.round((temperature - 32) * (5 / 9)),
     },
   };
-
-  return Math.ceil(temperature);
+  console.log(weather);
+  return weather;
 }
 
 export function getWeatherTempRange(temperature) {
