@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
@@ -46,7 +47,14 @@ function App() {
       <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
         <div className="page__wrapper">
           <Header onCreateModal={handleCreateModal} currentLocation={location} />
-          <Main onSelectCard={handleSelectedCard} weatherTemp={temp} weatherId={weatherId} />
+          <Switch>
+            <Route exact path="/">
+              <Main onSelectCard={handleSelectedCard} weatherTemp={temp} weatherId={weatherId} />
+            </Route>
+            <Route path="/profile">
+              <Profile />
+            </Route>
+          </Switch>
           <Footer />
           {activeModal === "create" && (
             <ModalWithForm title="New garment" onClose={handleCloseModal}>
@@ -75,7 +83,6 @@ function App() {
               </div>
             </ModalWithForm>
           )}
-          <Profile weatherTemp={temp} />
         </div>
         {activeModal === "preview" && <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />}
       </CurrentTemperatureUnitContext.Provider>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import headerLogo from "../../images/logo2.svg";
 import avatarImage from "../../images/avatar.svg";
@@ -11,7 +12,9 @@ function Header({ onCreateModal, currentLocation = "Location N/A" }) {
   return (
     <header className="header">
       <div className="header__container">
-        <img src={headerLogo} alt="WTWR logo" className="header__logo" />
+        <Link to="/">
+          <img src={headerLogo} alt="WTWR logo" className="header__logo" />
+        </Link>
         <p className="header__date">{currentDate},</p>
         <p className="header__city">{currentLocation}</p>
       </div>
@@ -25,10 +28,12 @@ function Header({ onCreateModal, currentLocation = "Location N/A" }) {
               </button>
             </li>
             <li>
-              <div className="header__nav-link">
-                {username}
-                <img src={avatarImage} alt="Profile Avatar" className="header__nav-avatar" />
-              </div>
+              <Link to="/profile">
+                <div className="header__nav-link">
+                  {username}
+                  <img src={avatarImage} alt="Profile Avatar" className="header__nav-avatar" />
+                </div>
+              </Link>
             </li>
           </ul>
         </nav>

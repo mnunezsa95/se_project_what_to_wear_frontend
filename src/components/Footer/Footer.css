@@ -7,8 +7,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 170px 0 0 0;
   padding-bottom: 24px;
+  padding-top: 150px;
 }
 
 .footer__name {
