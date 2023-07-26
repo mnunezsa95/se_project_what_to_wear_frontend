@@ -75,7 +75,7 @@ function App() {
               </div>
             </ModalWithForm>
           )}
-          <Profile />
+          <Profile weatherTemp={temp} />
         </div>
         {activeModal === "preview" && <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />}
       </CurrentTemperatureUnitContext.Provider>
