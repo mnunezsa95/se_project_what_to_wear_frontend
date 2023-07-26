@@ -1,0 +1,10 @@
+.sidebar__container {
+  width: 230px;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar__avatar {
+  padding-right: 16px;
+}

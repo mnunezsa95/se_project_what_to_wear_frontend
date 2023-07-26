@@ -3,10 +3,10 @@ import "./Header.css";
 import headerLogo from "../../images/logo2.svg";
 import avatarImage from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.js";
+import { username } from "../../utils/constants.js";
 
 function Header({ onCreateModal, currentLocation = "Location N/A" }) {
   const currentDate = new Date().toLocaleDateString("default", { month: "long", day: "numeric" });
-  const username = "Marlon Nunez";
 
   return (
     <header className="header">

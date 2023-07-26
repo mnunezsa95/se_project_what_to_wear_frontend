@@ -8,6 +8,9 @@ import ItemModal from "../ItemModal/ItemModal.js";
 import { getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from "../../utils/weatherAPI";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTempatureUnitContext.js";
 
+//! Delete later
+import Profile from "../Profile/Profile";
+
 function App() {
   const [temp, setTemp] = useState(0);
   const [location, setLocation] = useState("");
@@ -72,6 +75,7 @@ function App() {
               </div>
             </ModalWithForm>
           )}
+          <Profile />
         </div>
         {activeModal === "preview" && <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />}
       </CurrentTemperatureUnitContext.Provider>

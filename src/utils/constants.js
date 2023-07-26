@@ -1,3 +1,5 @@
+export const username = "Marlon Nunez";
+
 export const defaultClothingItems = [
   {
     _id: 0,
