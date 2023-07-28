@@ -19,6 +19,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [activeModal, setActiveModal] = useState(null); // setting Init. modalState to false
   const [selectedCard, setSelectedCard] = useState({}); // setting initial state
+  const [clothingItems, setClothingItems] = useState([]);
 
   const handleCreateModal = () => setActiveModal("create"); // function for opening modal
   const handleCloseModal = () => setActiveModal(null); // function for closing modal
@@ -26,7 +27,6 @@ function App() {
   // values is an object of the inputs
   const onAddItem = (values) => {
     console.log(values);
-    // console.log(evt.target);
   };
 
   const handleSelectedCard = (card) => {
