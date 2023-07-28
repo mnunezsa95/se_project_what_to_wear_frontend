@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../../../public/vendor/fonts/CabinetGrotesk-Regular.woff") format("woff");
+}
+
 .modal {
   position: fixed;
   top: 0;
@@ -46,6 +51,12 @@
   opacity: 0.5;
 }
 
+.modal__info-section-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 .modal__info {
   font-family: "Cabinet Grotesk", sans-serif;
   font-size: 20px;
@@ -61,4 +72,17 @@
 
 .modal__info-weather {
   margin: 0;
+}
+
+.modal__delete-button {
+  border: none;
+  color: rgba(255, 77, 0, 1);
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+  background-color: #fff;
+  width: fit-content;
+  padding: 20px 32px 32px 0;
+  cursor: pointer;
 }
