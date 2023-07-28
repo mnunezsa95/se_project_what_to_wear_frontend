@@ -1,7 +1,7 @@
 import React from "react";
 import "./ItemModal.css";
 
-function ItemModal({ selectedCard, onClose }) {
+function ItemModal({ selectedCard, onClose, handleDeleteButton }) {
   return (
     <div className="modal">
       <div className="modal__content-card">
@@ -12,7 +12,7 @@ function ItemModal({ selectedCard, onClose }) {
             <p className="modal__info-name">{selectedCard.name}</p>
             <p className="modal__info-weather">Weather: {selectedCard.weather}</p>
           </div>
-          <button className="modal__delete-button" type="text">
+          <button className="modal__delete-button" type="button" onClick={handleDeleteButton}>
             Delete item
           </button>
         </div>
