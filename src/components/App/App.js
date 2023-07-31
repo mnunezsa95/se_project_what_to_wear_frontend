@@ -9,7 +9,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal.js";
 import { getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from "../../utils/weatherAPI";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTempatureUnitContext.js";
-import { fetchClothingItems, postClothingItems } from "../../utils/api.js";
+import { fetchClothingItems, postClothingItems, deleteClothingItems } from "../../utils/api.js";
 
 function App() {
   const [temp, setTemp] = useState(0);
@@ -35,6 +35,11 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
+
+  const handleDeleteCard = (card) => {
+    deleteClothingItems().then(() => {});
+  };
+
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "C" ? setCurrentTemperatureUnit("F") : setCurrentTemperatureUnit("C");
   };
@@ -77,7 +82,7 @@ function App() {
           <Footer />
           {activeModal === "create" && <AddItemModal handleCloseModal={handleCloseModal} isOpen={activeModal === "create"} onAddItem={handleAddItemSubmit} />}
         </div>
-        {activeModal === "preview" && <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />}
+        {activeModal === "preview" && <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} handleDeleteCard={handleDeleteCard} />}
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );

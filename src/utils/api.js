@@ -8,17 +8,17 @@ const checkServerResponse = (res) => {
 };
 
 export function fetchClothingItems() {
-  const getClothingItems = fetch(`${baseUrl}/items`, {
+  const getItems = fetch(`${baseUrl}/items`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   }).then(checkServerResponse);
-  return getClothingItems;
+  return getItems;
 }
 
 export function postClothingItems({ name, imageUrl, weatherTypeInput }) {
-  const postClothingItems = fetch(`${baseUrl}/items`, {
+  const postItems = fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -26,5 +26,15 @@ export function postClothingItems({ name, imageUrl, weatherTypeInput }) {
     body: JSON.stringify({ name, imageUrl, weather: weatherTypeInput }),
   }).then(checkServerResponse);
 
-  return postClothingItems;
+  return postItems;
+}
+
+export function deleteClothingItems(selectedCard) {
+  const deleteItems = fetch(`${baseUrl}/items/${selectedCard.id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then(checkServerResponse);
+  return deleteItems;
 }

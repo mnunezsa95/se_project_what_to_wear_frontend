@@ -101,24 +101,6 @@
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
       "id": 17
-    },
-    {
-      "name": "abc",
-      "imageUrl": "https://pixabay.com/vectors/hat-baseball-cap-clothing-head-25758/",
-      "weather": "warm",
-      "id": 18
-    },
-    {
-      "name": "abc",
-      "imageUrl": "https://pixabay.com/vectors/hat-baseball-cap-clothing-head-25758/",
-      "weather": "warm",
-      "id": 19
-    },
-    {
-      "name": "ddd",
-      "imageUrl": "https://cdn.pixabay.com/photo/2012/04/05/01/45/hat-25758_1280.png",
-      "weather": "warm",
-      "id": 20
     }
   ]
 }

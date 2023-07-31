@@ -1,9 +1,9 @@
-.switch {
+.toggleSwitch {
   display: flex;
   position: relative;
 }
 
-.switch__box {
+.toggleSwitch__box {
   border-radius: 25px;
   border: 2px solid #000;
   width: 55px;
@@ -11,7 +11,7 @@
   appearance: none;
 }
 
-.switch__slider {
+.toggleSwitch__slider {
   border-radius: 20px;
   width: 30px;
   height: 30px;
@@ -22,31 +22,42 @@
   position: absolute;
 }
 
-.switch__slider-F {
+.toggleSwitch__slider-F {
   top: 3px;
   left: 28px;
 }
 
-.switch__slider-C {
+.toggleSwitch__slider-C {
   top: 3px;
   left: 5px;
 }
 
-.switch__temp-F {
+.toggleSwitch__temp-F {
   position: absolute;
-  color: #f3f3f3;
-  top: -7px;
-  left: 40px;
+  top: -13px;
+  left: 39px;
+  color: #000;
+  font-weight: 700;
 }
 
-.switch__temp-C {
+.toggleSwitch__temp-C {
   position: absolute;
-  color: #f3f3f3;
-  top: -7px;
-  left: 14px;
+  top: -13px;
+  left: 12px;
+  color: #000;
+  font-weight: 700;
 }
 
-.switch__active {
-  font-size: 16px;
+.toggleSwitch__active-C {
+  font-size: 20px;
   color: #f3f3f3;
+  top: -13px;
+  font-weight: 700;
+}
+
+.toggleSwitch__active-F {
+  font-size: 20px;
+  color: #f3f3f3;
+  top: -13px;
+  font-weight: 700;
 }
