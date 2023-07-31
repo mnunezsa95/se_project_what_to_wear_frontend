@@ -8,7 +8,7 @@ function ItemCard({ item, onSelectCard }) {
         <p className="card__name">{item.name}</p>
         <button className="card__like-button" type="button" />
       </div>
-      <img className="card__image" src={item.link} alt={item.name} onClick={() => onSelectCard(item)} />
+      <img className="card__image" src={item.imageUrl} alt={item.name} onClick={() => onSelectCard(item)} />
     </div>
   );
 }

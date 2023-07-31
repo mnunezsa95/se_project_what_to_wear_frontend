@@ -6,11 +6,10 @@ import Footer from "../Footer/Footer.js";
 import Main from "../Main/Main.js";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
-
-import ModalWithForm from "../ModalWithForm/ModalWithForm.js";
 import ItemModal from "../ItemModal/ItemModal.js";
 import { getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from "../../utils/weatherAPI";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTempatureUnitContext.js";
+import { fetchClothingItems, postClothingItems } from "../../utils/api.js";
 
 function App() {
   const [temp, setTemp] = useState(0);
@@ -25,8 +24,13 @@ function App() {
   const handleCloseModal = () => setActiveModal(null); // function for closing modal
 
   // values is an object of the inputs
-  const onAddItem = (values) => {
+  const handleAddItemSubmit = (values) => {
     console.log(values);
+    postClothingItems(values).then((data) => {
+      setClothingItems([data, ...clothingItems]).catch((error) => {
+        console.log(error.status);
+      });
+    });
   };
 
   const handleSelectedCard = (card) => {
@@ -49,6 +53,17 @@ function App() {
       .catch((err) => console.error(err));
   }, []); // dependency to start only once during mounting
 
+  useEffect(() => {
+    fetchClothingItems()
+      .then((data) => {
+        setClothingItems(data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
     <div className="page">
       <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
@@ -56,14 +71,14 @@ function App() {
           <Header onCreateModal={handleCreateModal} currentLocation={location} />
           <Switch>
             <Route exact path="/">
-              <Main onSelectCard={handleSelectedCard} weatherTemp={temp} weatherId={weatherId} />
+              <Main onSelectCard={handleSelectedCard} weatherTemp={temp} weatherId={weatherId} clothingItems={clothingItems} />
             </Route>
             <Route path="/profile">
-              <Profile />
+              <Profile onSelectCard={handleSelectedCard} clothingItems={clothingItems} onCreateModal={handleCreateModal} />
             </Route>
           </Switch>
           <Footer />
-          {activeModal === "create" && <AddItemModal handleCloseModal={handleCloseModal} isOpen={activeModal === "create"} onAddItem={onAddItem} />}
+          {activeModal === "create" && <AddItemModal handleCloseModal={handleCloseModal} isOpen={activeModal === "create"} onAddItem={handleAddItemSubmit} />}
         </div>
         {activeModal === "preview" && <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />}
       </CurrentTemperatureUnitContext.Provider>
