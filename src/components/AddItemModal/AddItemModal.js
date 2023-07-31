@@ -1,4 +1,4 @@
-// TestMODALURL -->  https://pixabay.com/vectors/hat-baseball-cap-clothing-head-25758/
+// TestMODALURL -->  https://cdn.pixabay.com/photo/2012/04/05/01/45/hat-25758_1280.png
 
 import React from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
@@ -48,15 +48,15 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
       </div>
       <p className="form__prompt">Select the weather type:</p>
       <div className="form__container-selections">
-        <input className="form__input-selector" type="radio" id="hot" value="hot" onChange={handleWeatherInputChange} />
+        <input className="form__input-selector" name="weatherRadioInput" type="radio" id="hot" value="hot" onChange={handleWeatherInputChange} />
         <label className="form__label-selector">Hot</label>
       </div>
       <div className="form__container-selections">
-        <input className="form__input-selector" type="radio" id="warm" value="warm" onChange={handleWeatherInputChange} />
+        <input className="form__input-selector" name="weatherRadioInput" type="radio" id="warm" value="warm" onChange={handleWeatherInputChange} />
         <label className="form__label-selector">Warm</label>
       </div>
       <div className="form__container-selections">
-        <input className="form__input-selector" type="radio" id="cold" value="cold" onChange={handleWeatherInputChange} />
+        <input className="form__input-selector" name="weatherRadioInput" type="radio" id="cold" value="cold" onChange={handleWeatherInputChange} />
         <label className="form__label-selector">Cold</label>
       </div>
     </ModalWithForm>

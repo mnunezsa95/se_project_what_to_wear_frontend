@@ -27,9 +27,7 @@ function App() {
   const handleAddItemSubmit = (values) => {
     console.log(values);
     postClothingItems(values).then((data) => {
-      setClothingItems([data, ...clothingItems]).catch((error) => {
-        console.log(error.status);
-      });
+      setClothingItems([data, ...clothingItems]);
     });
   };
 
@@ -57,7 +55,6 @@ function App() {
     fetchClothingItems()
       .then((data) => {
         setClothingItems(data);
-        console.log(data);
       })
       .catch((error) => {
         console.error(error);
