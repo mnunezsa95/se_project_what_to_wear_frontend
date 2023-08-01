@@ -7,7 +7,7 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.js";
 import { username } from "../../utils/constants.js";
 
 function Header({ onCreateModal, currentLocation = "Location N/A" }) {
-  const currentDate = new Date().toLocaleDateString("default", { month: "long", day: "numeric" });
+  const currentDate = new Date().toLocaleDateString("default", { year: "numeric", month: "long", day: "numeric" });
 
   return (
     <header className="header">

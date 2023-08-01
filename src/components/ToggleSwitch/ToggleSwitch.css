@@ -5,7 +5,7 @@
 
 .toggleSwitch__box {
   border-radius: 25px;
-  border: 2px solid #000;
+  border: 2px solid rgba(126, 126, 126, 1);
   width: 55px;
   height: 30px;
   appearance: none;
@@ -36,7 +36,7 @@
   position: absolute;
   top: -13px;
   left: 39px;
-  color: #000;
+  color: rgba(0, 0, 0, 0.5);
   font-weight: 700;
 }
 
@@ -44,7 +44,7 @@
   position: absolute;
   top: -13px;
   left: 12px;
-  color: #000;
+  color: rgba(0, 0, 0, 0.5);
   font-weight: 700;
 }
 

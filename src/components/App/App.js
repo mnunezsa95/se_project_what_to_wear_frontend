@@ -26,9 +26,12 @@ function App() {
   // values is an object of the inputs
   const handleAddItemSubmit = (values) => {
     console.log(values);
-    postClothingItems(values).then((data) => {
-      setClothingItems([data, ...clothingItems]);
-    });
+    postClothingItems(values)
+      .then((data) => {
+        setClothingItems([data, ...clothingItems]);
+        handleCloseModal();
+      })
+      .catch((error) => console.error(error));
   };
 
   const handleSelectedCard = (card) => {
@@ -36,8 +39,16 @@ function App() {
     setSelectedCard(card);
   };
 
-  const handleDeleteCard = (card) => {
-    deleteClothingItems().then(() => {});
+  const handleDeleteCard = (selectedCard) => {
+    deleteClothingItems(selectedCard)
+      .then(() => {
+        const newClothingItems = clothingItems.filter((cards) => {
+          return cards.id !== selectedCard.id;
+        });
+        setClothingItems(newClothingItems);
+        handleCloseModal();
+      })
+      .catch((error) => console.error(error));
   };
 
   const handleToggleSwitchChange = () => {

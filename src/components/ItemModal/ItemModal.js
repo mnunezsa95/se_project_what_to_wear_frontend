@@ -12,7 +12,7 @@ function ItemModal({ selectedCard, onClose, handleDeleteCard }) {
             <p className="modal__info-name">{selectedCard.name}</p>
             <p className="modal__info-weather">Weather: {selectedCard.weather}</p>
           </div>
-          <button className="modal__delete-button" type="button" onClick={handleDeleteCard}>
+          <button className="modal__delete-button" type="button" onClick={() => handleDeleteCard(selectedCard)}>
             Delete item
           </button>
         </div>
