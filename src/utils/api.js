@@ -1,11 +1,5 @@
+import { checkServerResponse } from "../utils/constants.js";
 const baseUrl = "https://my-json-server.typicode.com/mnunezsa95/se_project_react";
-const checkServerResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  } else {
-    return Promise.reject(`Error: ${res.status}`);
-  }
-};
 
 export function fetchClothingItems() {
   const getItems = fetch(`${baseUrl}/items`, {

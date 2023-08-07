@@ -40,11 +40,11 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
       <div className="form__container-inputs">
         <label className="form__label">
           Name
-          <input className="form__input-text" type="text" name={name} minLength="1" maxLength="30" required placeholder="Name" onChange={handleNameChange} />
+          <input className="form__input-text" type="text" value={name} minLength="1" maxLength="30" required placeholder="Name" onChange={handleNameChange} />
         </label>
         <label className="form__label">
           Image
-          <input className="form__input-text" type="url" name={imageUrl} minLength="1" required placeholder="Image URL" onChange={handleUrlChange} />
+          <input className="form__input-text" type="url" value={imageUrl} minLength="1" required placeholder="Image URL" onChange={handleUrlChange} />
         </label>
       </div>
       <p className="form__prompt">Select the weather type:</p>
