@@ -4,7 +4,7 @@ import React from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./AddItemModal.css";
 
-function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
+function AddItemModal({ handleCloseModal, onAddItem, isOpen, buttonText = "Add Garment" }) {
   const [name, setName] = React.useState("");
   const [imageUrl, setImageUrl] = React.useState("");
   const [weatherTypeInput, setWeatherTypeInput] = React.useState("");
@@ -60,6 +60,9 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
         <input className="form__input-selector" name="weatherRadioInput" type="radio" id="cold" value="cold" onChange={handleWeatherInputChange} />
         <label className="form__label-selector">Cold</label>
       </div>
+      <button className="modal__submit-button" type="submit">
+        {buttonText}
+      </button>
     </ModalWithForm>
   );
 }
