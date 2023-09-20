@@ -1,5 +1,3 @@
-// TestMODALURL -->  https://cdn.pixabay.com/photo/2012/04/05/01/45/hat-25758_1280.png
-
 import React from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./AddItemModal.css";

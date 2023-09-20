@@ -8,6 +8,7 @@ import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal.js";
 import RegisterModal from "../RegisterModal/RegisterModal.js";
+import LoginModal from "../LoginModal/LoginModal.js";
 import { getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from "../../utils/weatherAPI";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { fetchClothingItems, postClothingItems, deleteClothingItems } from "../../utils/api.js";
@@ -97,6 +98,7 @@ function App() {
         {activeModal === "preview" && <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} handleDeleteCard={handleDeleteCard} />}
       </CurrentTemperatureUnitContext.Provider>
       {/* <RegisterModal></RegisterModal> */}
+      {/* <LoginModal></LoginModal> */}
     </div>
   );
 }
