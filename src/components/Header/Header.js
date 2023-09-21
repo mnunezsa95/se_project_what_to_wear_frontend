@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import headerLogo from "../../images/logo2.svg";
-import avatarImage from "../../images/avatar.svg";
+// import avatarImage from "../../images/avatar.svg"; //! delete
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.js";
-import { username } from "../../utils/constants.js";
+// import { username } from "../../utils/constants.js"; //! delete
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Header({ onCreateModal, currentLocation = "Location N/A", isLoggedIn, onRegisterModal, onLoginModal }) {
   const currentDate = new Date().toLocaleDateString("default", { year: "numeric", month: "long", day: "numeric" });
+  const userContext = useContext(CurrentUserContext);
+  const userData = userContext ? userContext : { name: "n/a", avatar: "n/a" };
+  const userAvatar = userData.avatar;
+  const userName = userData.name;
 
   return (
     <header className="header">
@@ -31,8 +36,8 @@ function Header({ onCreateModal, currentLocation = "Location N/A", isLoggedIn, o
               <li>
                 <Link to="/profile">
                   <div className="header__nav-link">
-                    {username}
-                    <img src={avatarImage} alt="Profile Avatar" className="header__nav-avatar" />
+                    {userName}
+                    <img src={userAvatar} alt="Profile Avatar" className="header__nav-avatar" />
                   </div>
                 </Link>
               </li>

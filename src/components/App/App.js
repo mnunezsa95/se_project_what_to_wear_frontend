@@ -85,11 +85,12 @@ function App() {
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
-    console.log("token -->", jwt); //! Check value of token
     if (jwt) {
       setToken(jwt);
       authorizeToken(jwt)
         .then((res) => {
+          setCurrentUser(res);
+
           setIsLoggedIn(true);
         })
         .catch((err) => console.error("Invalid token: ", err));
