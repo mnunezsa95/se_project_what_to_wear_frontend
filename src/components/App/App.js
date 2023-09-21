@@ -36,6 +36,8 @@ function App() {
       .then((res) => {
         setCurrentUser(res);
         handleSignIn({ emailValue, passwordValue });
+        setIsLoggedIn(true);
+        setActiveModal(null);
       })
       .catch((err) => console.error(err));
   };
