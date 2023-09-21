@@ -35,7 +35,7 @@ function App() {
     signUp({ email: emailValue, password: papsswordValue, name: nameValue, avatar: avatarValue })
       .then((res) => {
         setCurrentUser(res);
-        handleSignIn(emailValue, papsswordValue);
+        handleSignIn({ emailValue, papsswordValue });
       })
       .catch((err) => console.error(err));
   };

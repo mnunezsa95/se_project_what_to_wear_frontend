@@ -3,7 +3,7 @@ import { checkServerResponse } from "./constants.js";
 const baseUrl = "http://localhost:3001";
 
 export const signUp = ({ email, password, name, avatar }) => {
-  fetch(`${baseUrl}/signup`, {
+  return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -13,7 +13,7 @@ export const signUp = ({ email, password, name, avatar }) => {
 };
 
 export const signIn = ({ email, password }) => {
-  fetch(`${baseUrl}/signin`, {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
