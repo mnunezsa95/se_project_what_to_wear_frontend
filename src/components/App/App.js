@@ -30,7 +30,7 @@ function App() {
   const handleLoginModal = () => setActiveModal("login");
   const handleRegisterModal = () => setActiveModal("register");
   const handleCreateModal = () => setActiveModal("create");
-  const handleCloseModal = () => setActiveModal(null); // function for closing modal
+  const handleCloseModal = () => setActiveModal(null);
   const handleToggleSwitchChange = () => (currentTemperatureUnit === "C" ? setCurrentTemperatureUnit("F") : setCurrentTemperatureUnit("C"));
 
   const handleRegistration = ({ emailValue, passwordValue, nameValue, avatarValue }) => {
