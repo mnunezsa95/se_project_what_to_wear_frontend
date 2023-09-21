@@ -1,11 +1,8 @@
 export const username = "Marlon Nunez";
 
 export const checkServerResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  } else {
-    return Promise.reject(`Error: ${res.status}`);
-  }
+  if (!res.ok) return Promise.reject(`Error: ${res.status}`);
+  return res.json();
 };
 
 export const weatherOptions = [

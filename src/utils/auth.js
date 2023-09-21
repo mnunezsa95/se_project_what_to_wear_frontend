@@ -1,3 +1,5 @@
+import { checkServerResponse } from "./constants.js";
+
 const baseUrl = "http://localhost:3001";
 
 export const signUp = ({ email, password, name, avatar }) => {
@@ -7,7 +9,7 @@ export const signUp = ({ email, password, name, avatar }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password, name, avatar }),
-  });
+  }).then(checkServerResponse);
 };
 
 export const signIn = ({ email, password }) => {
@@ -17,5 +19,5 @@ export const signIn = ({ email, password }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  });
+  }).then(checkServerResponse);
 };

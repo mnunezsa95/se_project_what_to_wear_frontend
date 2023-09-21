@@ -13,7 +13,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 import { getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from "../../utils/weatherAPI";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { fetchClothingItems, postClothingItems, deleteClothingItems } from "../../utils/api.js";
-import { signUp } from "../../auth";
+import { signUp, signIn } from "../../utils/auth";
 
 function App() {
   const [temp, setTemp] = useState(0);
@@ -35,13 +35,13 @@ function App() {
     signUp({ email: emailValue, password: papsswordValue, name: nameValue, avatar: avatarValue })
       .then((res) => {
         setCurrentUser(res);
-        handleSignIn({ emailValue, papsswordValue });
+        handleSignIn(emailValue, papsswordValue);
       })
       .catch((err) => console.error(err));
   };
 
   const handleSignIn = ({ emailValue, papsswordValue }) => {
-    signUp({ email: emailValue, password: papsswordValue })
+    signIn({ email: emailValue, password: papsswordValue })
       .then((res) => console.log(res))
       .catch((err) => console.error(err));
   };
