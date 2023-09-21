@@ -19,5 +19,3 @@ export const signIn = ({ email, password }) => {
     body: JSON.stringify({ email, password }),
   });
 };
-
-export const register = {};

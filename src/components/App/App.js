@@ -14,23 +14,39 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 import { getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from "../../utils/weatherAPI";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { fetchClothingItems, postClothingItems, deleteClothingItems } from "../../utils/api.js";
+import { signUp } from "../../auth";
 
 function App() {
   const [temp, setTemp] = useState(0);
   const [location, setLocation] = useState("");
   const [weatherId, setweatherId] = useState(800);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [activeModal, setActiveModal] = useState(null); // setting Init. modalState to false
-  const [selectedCard, setSelectedCard] = useState({}); // setting initial state
+  const [activeModal, setActiveModal] = useState(null);
+  const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [currentUser, setCurrentUser] = React.useState(null);
 
   const handleLoginModal = () => setActiveModal("login");
   const handleRegisterModal = () => setActiveModal("register");
   const handleCreateModal = () => setActiveModal("create");
   const handleCloseModal = () => setActiveModal(null); // function for closing modal
 
-  // values is an object of the inputs
+  const handleRegistration = ({ emailValue, papsswordValue, nameValue, avatarValue }) => {
+    signUp({ email: emailValue, password: papsswordValue, name: nameValue, avatar: avatarValue })
+      .then((res) => {
+        setCurrentUser(res);
+        handleSignIn({ emailValue, papsswordValue });
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const handleSignIn = ({ emailValue, papsswordValue }) => {
+    signUp({ email: emailValue, password: papsswordValue })
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
+  };
+
   const handleAddItemSubmit = (values) => {
     console.log(values);
     postClothingItems(values)
@@ -58,9 +74,7 @@ function App() {
       .catch((error) => console.error(error));
   };
 
-  const handleToggleSwitchChange = () => {
-    currentTemperatureUnit === "C" ? setCurrentTemperatureUnit("F") : setCurrentTemperatureUnit("C");
-  };
+  const handleToggleSwitchChange = () => (currentTemperatureUnit === "C" ? setCurrentTemperatureUnit("F") : setCurrentTemperatureUnit("C"));
 
   useEffect(() => {
     getWeatherForcast()
@@ -109,9 +123,16 @@ function App() {
           {activeModal === "create" && <AddItemModal handleCloseModal={handleCloseModal} isOpen={activeModal === "create"} onAddItem={handleAddItemSubmit} />}
           {activeModal === "preview" && <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} handleDeleteCard={handleDeleteCard} />}
           {activeModal === "register" && (
-            <RegisterModal handleCloseModal={handleCloseModal} isOpen={activeModal === "register"} onLoginModal={handleLoginModal} />
+            <RegisterModal
+              isOpen={activeModal === "register"}
+              handleCloseModal={handleCloseModal}
+              onLoginModal={handleLoginModal}
+              onSubmit={handleRegistration}
+            />
           )}
-          {activeModal === "login" && <LoginModal handleCloseModal={handleCloseModal} isOpen={activeModal === "login"} onRegisterModal={handleRegisterModal} />}
+          {activeModal === "login" && (
+            <LoginModal isOpen={activeModal === "login"} handleCloseModal={handleCloseModal} onRegisterModal={handleRegisterModal} onSubmit={handleSignIn} />
+          )}
         </div>
       </CurrentTemperatureUnitContext.Provider>
     </div>

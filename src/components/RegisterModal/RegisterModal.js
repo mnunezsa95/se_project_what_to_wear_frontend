@@ -1,38 +1,22 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
-import { register } from "../../auth.js";
 
-function RegisterModal({ handleCloseModal, isOpen, buttonText = "Next", onLoginModal }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
+function RegisterModal({ handleCloseModal, isOpen, buttonText = "Next", onLoginModal, onSubmit }) {
+  const [emailValue, setEmailValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
+  const [nameValue, setNameValue] = useState("");
+  const [avatarValue, setAvatarValue] = useState("");
 
-  const handleEmailChange = (evt) => {
-    console.log(evt.target.value);
-    setEmail(evt.target.value);
-  };
-
-  const handlePasswordChange = (evt) => {
-    console.log(evt.target.value);
-    setPassword(evt.target.value);
-  };
-
-  const handleNameChange = (evt) => {
-    console.log(evt.target.value);
-    setName(evt.target.value);
-  };
-
-  const handleAvatarChange = (evt) => {
-    console.log(evt.target.value);
-    setAvatar(evt.target.value);
-  };
+  const handleEmailChange = (evt) => setEmailValue(evt.target.value);
+  const handlePasswordChange = (evt) => setPasswordValue(evt.target.value);
+  const handleNameChange = (evt) => setNameValue(evt.target.value);
+  const handleAvatarChange = (evt) => setAvatarValue(evt.target.value);
 
   const handleSubmit = (evt) => {
-    evt.PreventDefault();
-    const { email, password, name, avatar } = this.state;
-    register(email, password, name, avatar);
+    evt.preventDefault();
+    console.log(emailValue, passwordValue, nameValue, avatarValue);
+    onSubmit({ emailValue, passwordValue, nameValue, avatarValue });
   };
 
   return (
@@ -40,7 +24,7 @@ function RegisterModal({ handleCloseModal, isOpen, buttonText = "Next", onLoginM
       <div className="form__container-inputs">
         <label className="form__label">
           Email
-          <input className="form__input-text" name="email" type="email" placeholder="Email" required value={email} onChange={handleEmailChange} />
+          <input className="form__input-text" name="email" type="email" placeholder="Email" required value={emailValue} onChange={handleEmailChange} />
         </label>
         <label className="form__label">
           Password
@@ -52,7 +36,7 @@ function RegisterModal({ handleCloseModal, isOpen, buttonText = "Next", onLoginM
             maxLength="8"
             placeholder="Password"
             required
-            value={password}
+            value={passwordValue}
             onChange={handlePasswordChange}
           />
         </label>
@@ -66,13 +50,13 @@ function RegisterModal({ handleCloseModal, isOpen, buttonText = "Next", onLoginM
             maxLength="30"
             placeholder="Name"
             required
-            value={name}
+            value={nameValue}
             onChange={handleNameChange}
           />
         </label>
         <label className="form__label">
           Avatar
-          <input className="form__input-text" name="avatar" type="url" placeholder="Image Url" required value={avatar} onChange={handleAvatarChange} />
+          <input className="form__input-text" name="avatar" type="url" placeholder="Image Url" required value={avatarValue} onChange={handleAvatarChange} />
         </label>
         <div>
           <button className="modal__submit-button" type="submit">

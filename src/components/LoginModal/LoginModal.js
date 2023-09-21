@@ -1,25 +1,18 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
-function LoginModal({ handleCloseModal, isOpen, onLogin, buttonText = "Log in", onRegisterModal }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+function LoginModal({ handleCloseModal, isOpen, onLogin, buttonText = "Log in", onRegisterModal, onSubmit }) {
+  const [emailValue, setEmailValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
 
-  const handleEmailChange = (evt) => {
-    console.log(evt.target.value);
-    setEmail(evt.target.value);
-  };
-
-  const handlePasswordChange = (evt) => {
-    console.log(evt.target.value);
-    setPassword(evt.target.value);
-  };
+  const handleEmailChange = (evt) => setEmailValue(evt.target.value);
+  const handlePasswordChange = (evt) => setPasswordValue(evt.target.value);
 
   const handleSubmit = (evt) => {
-    evt.PreventDefault();
-    onLogin({ email, password });
+    evt.preventDefault();
+    console.log(emailValue, passwordValue);
+    onSubmit({ emailValue, passwordValue });
   };
 
   return (
@@ -27,7 +20,7 @@ function LoginModal({ handleCloseModal, isOpen, onLogin, buttonText = "Log in", 
       <div className="form__container-inputs">
         <label className="form__label">
           Email
-          <input className="form__input-text" name="email" type="email" placeholder="Email" required value={email} onChange={handleEmailChange} />
+          <input className="form__input-text" name="email" type="email" placeholder="Email" required value={emailValue} onChange={handleEmailChange} />
         </label>
         <label className="form__label">
           Password
@@ -39,7 +32,7 @@ function LoginModal({ handleCloseModal, isOpen, onLogin, buttonText = "Log in", 
             maxLength="8"
             placeholder="Password"
             required
-            value={password}
+            value={passwordValue}
             onChange={handlePasswordChange}
           />
         </label>
