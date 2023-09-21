@@ -9,7 +9,6 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal.js";
 import RegisterModal from "../RegisterModal/RegisterModal.js";
 import LoginModal from "../LoginModal/LoginModal.js";
-// import { AppContext } from "../../contexts/AppContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 import { getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from "../../utils/weatherAPI";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
