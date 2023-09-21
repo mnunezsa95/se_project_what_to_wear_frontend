@@ -14,6 +14,7 @@ import { getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { fetchClothingItems, postClothingItems, deleteClothingItems } from "../../utils/api.js";
 import { signUp, signIn, authorizeToken } from "../../utils/auth";
+import { jwt } from "../../utils/constants";
 
 function App() {
   const [temp, setTemp] = useState(0);
@@ -48,7 +49,7 @@ function App() {
     signIn({ email: emailValue, password: passwordValue })
       .then((res) => {
         localStorage.setItem("jwt", res.token);
-        setToken(localStorage.getItem("jwt"));
+        setToken(jwt);
         setIsLoggedIn(true);
       })
       .then(() => handleCloseModal())
@@ -57,7 +58,7 @@ function App() {
 
   const handleAddItemSubmit = (values) => {
     console.log(values);
-    postClothingItems(values)
+    postClothingItems(values, jwt)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
         handleCloseModal();
@@ -71,7 +72,8 @@ function App() {
   };
 
   const handleDeleteCard = (selectedCard) => {
-    deleteClothingItems(selectedCard)
+    console.log(jwt);
+    deleteClothingItems(selectedCard, jwt)
       .then(() => {
         const newClothingItems = clothingItems.filter((cards) => {
           return cards.id !== selectedCard.id;
@@ -83,7 +85,6 @@ function App() {
   };
 
   useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
     console.log("token -->", jwt); //! Check value of token
     if (jwt) {
       setToken(jwt);
