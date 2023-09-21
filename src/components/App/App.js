@@ -26,8 +26,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
   const handleLoginModal = () => setActiveModal("login");
-  const handleRegistrationModal = () => setActiveModal("register");
-  const handleCreateModal = () => setActiveModal("create"); // function for opening modal
+  const handleRegisterModal = () => setActiveModal("register");
+  const handleCreateModal = () => setActiveModal("create");
   const handleCloseModal = () => setActiveModal(null); // function for closing modal
 
   // values is an object of the inputs
@@ -88,7 +88,13 @@ function App() {
     <div className="page">
       <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
         <div className="page__wrapper">
-          <Header onCreateModal={handleCreateModal} currentLocation={location} isLoggedIn={isLoggedIn} />
+          <Header
+            currentLocation={location}
+            isLoggedIn={isLoggedIn}
+            onCreateModal={handleCreateModal}
+            onRegisterModal={handleRegisterModal}
+            onLoginModal={handleLoginModal}
+          />
           <Switch>
             <Route exact path="/">
               <Main onSelectCard={handleSelectedCard} weatherTemp={temp} weatherId={weatherId} clothingItems={clothingItems} />
@@ -103,9 +109,9 @@ function App() {
           {activeModal === "create" && <AddItemModal handleCloseModal={handleCloseModal} isOpen={activeModal === "create"} onAddItem={handleAddItemSubmit} />}
           {activeModal === "preview" && <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} handleDeleteCard={handleDeleteCard} />}
           {activeModal === "register" && (
-            <RegisterModal handleCloseModal={handleCloseModal} isOpen={activeModal === "register"} onRegisterModal={handleRegistrationModal} />
+            <RegisterModal handleCloseModal={handleCloseModal} isOpen={activeModal === "register"} onLoginModal={handleLoginModal} />
           )}
-          {activeModal === "login" && <LoginModal handleCloseModal={handleCloseModal} isOpen={activeModal === "login"} onLoginModal={handleLoginModal} />}
+          {activeModal === "login" && <LoginModal handleCloseModal={handleCloseModal} isOpen={activeModal === "login"} onRegisterModal={handleRegisterModal} />}
         </div>
       </CurrentTemperatureUnitContext.Provider>
     </div>
