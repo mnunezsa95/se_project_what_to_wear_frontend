@@ -1,6 +1,5 @@
 export const username = "Marlon Nunez";
 export const BASE_URL = "http://localhost:3001";
-export const jwt = localStorage.getItem("jwt");
 
 export const checkServerResponse = (res) => {
   if (!res.ok) return Promise.reject(`Error: ${res.status}`);

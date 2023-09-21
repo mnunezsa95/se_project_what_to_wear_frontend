@@ -11,12 +11,12 @@ export function fetchClothingItems() {
   return getItems;
 }
 
-export function postClothingItems({ name, imageUrl, weatherTypeInput }, token) {
+export function postClothingItems({ name, imageUrl, weatherTypeInput }) {
   const postItems = fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
     body: JSON.stringify({ name, imageUrl, weather: weatherTypeInput }),
   }).then(checkServerResponse);
@@ -29,7 +29,7 @@ export function deleteClothingItems(selectedCard, token) {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
   }).then(checkServerResponse);
   return deleteItems;
