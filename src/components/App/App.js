@@ -31,17 +31,17 @@ function App() {
   const handleCreateModal = () => setActiveModal("create");
   const handleCloseModal = () => setActiveModal(null); // function for closing modal
 
-  const handleRegistration = ({ emailValue, papsswordValue, nameValue, avatarValue }) => {
-    signUp({ email: emailValue, password: papsswordValue, name: nameValue, avatar: avatarValue })
+  const handleRegistration = ({ emailValue, passwordValue, nameValue, avatarValue }) => {
+    signUp({ email: emailValue, password: passwordValue, name: nameValue, avatar: avatarValue })
       .then((res) => {
         setCurrentUser(res);
-        handleSignIn({ emailValue, papsswordValue });
+        handleSignIn({ emailValue, passwordValue });
       })
       .catch((err) => console.error(err));
   };
 
-  const handleSignIn = ({ emailValue, papsswordValue }) => {
-    signIn({ email: emailValue, password: papsswordValue })
+  const handleSignIn = ({ emailValue, passwordValue }) => {
+    signIn({ email: emailValue, password: passwordValue })
       .then((res) => console.log(res))
       .catch((err) => console.error(err));
   };
