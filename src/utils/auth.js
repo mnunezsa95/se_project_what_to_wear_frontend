@@ -1,9 +1,7 @@
-import { checkServerResponse } from "./constants.js";
-
-const baseUrl = "http://localhost:3001";
+import { BASE_URL, checkServerResponse } from "./constants.js";
 
 export const signUp = ({ email, password, name, avatar }) => {
-  return fetch(`${baseUrl}/signup`, {
+  return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -13,11 +11,22 @@ export const signUp = ({ email, password, name, avatar }) => {
 };
 
 export const signIn = ({ email, password }) => {
-  return fetch(`${baseUrl}/signin`, {
+  return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
+  }).then(checkServerResponse);
+};
+
+export const authorizeToken = (token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   }).then(checkServerResponse);
 };

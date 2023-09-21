@@ -13,7 +13,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 import { getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from "../../utils/weatherAPI";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { fetchClothingItems, postClothingItems, deleteClothingItems } from "../../utils/api.js";
-import { signUp, signIn } from "../../utils/auth";
+import { signUp, signIn, authorizeToken } from "../../utils/auth";
 
 function App() {
   const [temp, setTemp] = useState(0);
@@ -25,11 +25,13 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState(null);
+  const [token, setToken] = React.useState("");
 
   const handleLoginModal = () => setActiveModal("login");
   const handleRegisterModal = () => setActiveModal("register");
   const handleCreateModal = () => setActiveModal("create");
   const handleCloseModal = () => setActiveModal(null); // function for closing modal
+  const handleToggleSwitchChange = () => (currentTemperatureUnit === "C" ? setCurrentTemperatureUnit("F") : setCurrentTemperatureUnit("C"));
 
   const handleRegistration = ({ emailValue, passwordValue, nameValue, avatarValue }) => {
     signUp({ email: emailValue, password: passwordValue, name: nameValue, avatar: avatarValue })
@@ -44,7 +46,12 @@ function App() {
 
   const handleSignIn = ({ emailValue, passwordValue }) => {
     signIn({ email: emailValue, password: passwordValue })
-      .then((res) => console.log(res))
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+        setToken(localStorage.getItem("jwt"));
+        setIsLoggedIn(true);
+      })
+      .then(() => handleCloseModal())
       .catch((err) => console.error(err));
   };
 
@@ -75,7 +82,18 @@ function App() {
       .catch((error) => console.error(error));
   };
 
-  const handleToggleSwitchChange = () => (currentTemperatureUnit === "C" ? setCurrentTemperatureUnit("F") : setCurrentTemperatureUnit("C"));
+  useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+    console.log("token -->", jwt); //! Check value of token
+    if (jwt) {
+      setToken(jwt);
+      authorizeToken(jwt)
+        .then((res) => {
+          setIsLoggedIn(true);
+        })
+        .catch((err) => console.error("Invalid token: ", err));
+    }
+  }, [token]);
 
   useEffect(() => {
     getWeatherForcast()
