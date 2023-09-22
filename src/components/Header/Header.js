@@ -10,7 +10,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 function Header({ onCreateModal, currentLocation = "Location N/A", isLoggedIn, onRegisterModal, onLoginModal }) {
   const currentDate = new Date().toLocaleDateString("default", { year: "numeric", month: "long", day: "numeric" });
   const userContext = useContext(CurrentUserContext);
-  const userData = userContext ? userContext : { name: "n/a", avatar: "n/a" };
+  const userData = userContext ? userContext : { name: "n/a", avatar: "" };
   const userAvatar = userData.avatar;
   const userName = userData.name;
 
