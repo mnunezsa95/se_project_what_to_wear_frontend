@@ -7,9 +7,14 @@
   max-width: 230px;
   height: auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
   margin-right: 116px;
   align-self: flex-start;
+}
+
+.sidebar__container-info {
+  display: flex;
 }
 
 .sidebar__avatar {
@@ -22,4 +27,26 @@
   font-size: 20px;
   line-height: 1.2;
   font-weight: 700;
+}
+
+.sidebar__container-buttons {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+
+.side__container-button {
+  display: flex;
+  padding-bottom: 8px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+  border: none;
+  background-color: #f3f3f3;
+  cursor: pointer;
+}
+
+.side__container-button:first-child {
+  padding-top: 24px;
 }

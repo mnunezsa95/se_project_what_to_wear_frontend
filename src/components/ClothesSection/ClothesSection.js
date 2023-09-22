@@ -1,10 +1,13 @@
-import React from "react";
-import "./ClothesSection.css";
+import { React, useContext } from "react";
 import ItemCard from "../ItemCard/ItemCard";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import "./ClothesSection.css";
 
 function ClothesSection({ onSelectCard, onCreateModal, clothingItems }) {
+  const currentUser = useContext(CurrentUserContext);
+  const userId = currentUser._id;
   const serverCards = clothingItems.filter((item) => {
-    return item.weather;
+    return item.owner === userId;
   });
   return (
     <div className="clothes__section-container">

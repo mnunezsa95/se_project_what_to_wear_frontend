@@ -2,9 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import headerLogo from "../../images/logo2.svg";
-// import avatarImage from "../../images/avatar.svg"; //! delete
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.js";
-// import { username } from "../../utils/constants.js"; //! delete
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function Header({ onCreateModal, currentLocation = "Location N/A", isLoggedIn, onRegisterModal, onLoginModal }) {
