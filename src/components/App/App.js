@@ -89,9 +89,8 @@ function App() {
       setToken(jwt);
       authorizeToken(jwt)
         .then((res) => {
-          setCurrentUser(res);
-
           setIsLoggedIn(true);
+          setCurrentUser(res);
         })
         .catch((err) => console.error("Invalid token: ", err));
     }
