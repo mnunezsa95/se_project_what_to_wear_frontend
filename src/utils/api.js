@@ -25,7 +25,7 @@ export function postClothingItems({ name, imageUrl, weatherTypeInput }) {
 }
 
 export function deleteClothingItems(selectedCard) {
-  const deleteItems = fetch(`${BASE_URL}/items/${selectedCard.id}`, {
+  const deleteItems = fetch(`${BASE_URL}/items/${selectedCard}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
-import "./App.css";
 import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
 import Main from "../Main/Main.js";
-import Profile from "../Profile/Profile";
-import AddItemModal from "../AddItemModal/AddItemModal";
+import Profile from "../Profile/Profile.js";
+import AddItemModal from "../AddItemModal/AddItemModal.js";
 import ItemModal from "../ItemModal/ItemModal.js";
 import RegisterModal from "../RegisterModal/RegisterModal.js";
 import LoginModal from "../LoginModal/LoginModal.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
-import { getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from "../../utils/weatherAPI";
+import { getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from "../../utils/weatherAPI.js";
 import { fetchClothingItems, postClothingItems, deleteClothingItems } from "../../utils/api.js";
-import { signUp, signIn, authorizeToken } from "../../utils/auth";
+import { signUp, signIn, authorizeToken } from "../../utils/auth.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
+import "./App.css";
 
 function App() {
   const [temp, setTemp] = useState(0);
@@ -48,7 +48,6 @@ function App() {
   const handleSignIn = ({ emailValue, passwordValue }) => {
     signIn({ email: emailValue, password: passwordValue })
       .then((res) => {
-        console.log(res);
         localStorage.setItem("jwt", res.token);
         setToken(localStorage.getItem("jwt"));
         setCurrentUser(res);
@@ -59,7 +58,6 @@ function App() {
   };
 
   const handleAddItemSubmit = (values) => {
-    console.log(values);
     postClothingItems(values)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
@@ -74,11 +72,9 @@ function App() {
   };
 
   const handleDeleteCard = (selectedCard) => {
-    console.log(selectedCard._id);
     deleteClothingItems(selectedCard._id)
       .then(() => {
         const newClothingItems = clothingItems.filter((cards) => {
-          console.log(cards.id);
           return cards.id !== selectedCard._id;
         });
         setClothingItems(newClothingItems);
@@ -110,7 +106,7 @@ function App() {
         setweatherId(getWeatherId(data));
       })
       .catch((err) => console.error(err));
-  }, []); // dependency to start only once during mounting
+  }, []);
 
   useEffect(() => {
     fetchClothingItems()
