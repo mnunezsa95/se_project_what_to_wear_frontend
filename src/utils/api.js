@@ -1,4 +1,5 @@
 import { checkServerResponse } from "../utils/constants.js";
+import { BASE_URL } from "../utils/constants.js"; //! Use this to replace
 const baseUrl = "https://my-json-server.typicode.com/mnunezsa95/se_project_react";
 
 export function fetchClothingItems() {
@@ -24,7 +25,7 @@ export function postClothingItems({ name, imageUrl, weatherTypeInput }) {
   return postItems;
 }
 
-export function deleteClothingItems(selectedCard, token) {
+export function deleteClothingItems(selectedCard) {
   const deleteItems = fetch(`${baseUrl}/items/${selectedCard.id}`, {
     method: "DELETE",
     headers: {
