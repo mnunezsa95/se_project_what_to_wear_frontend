@@ -1,14 +1,16 @@
-import React from "react";
+import { React, useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./SideBar.css";
-import { username } from "../../utils/constants";
-import avatarImage from "../../images/avatar.svg";
 
 function SideBar() {
+  const currentUser = useContext(CurrentUserContext);
+  const userAvatar = currentUser ? currentUser.avatar : null;
+  const userName = currentUser ? currentUser.name : null;
   return (
     <div className="sidebar__container">
       <div className="sidebar__container-info">
-        <img src={avatarImage} alt="Profile Avatar" className="sidebar__avatar" />
-        <p className="sidebar_profile-name">{username}</p>
+        <img src={userAvatar} alt="Profile Avatar" className="sidebar__avatar" />
+        <p className="sidebar_profile-name">{userName}</p>
       </div>
       <div className="sidebar__container-buttons">
         <button className="side__container-button" type="button">
