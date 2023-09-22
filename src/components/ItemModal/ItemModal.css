@@ -86,3 +86,7 @@
   padding: 20px 32px 32px 0;
   cursor: pointer;
 }
+
+.modal__delete-button_hidden {
+  visibility: hidden;
+}

@@ -48,8 +48,10 @@ function App() {
   const handleSignIn = ({ emailValue, passwordValue }) => {
     signIn({ email: emailValue, password: passwordValue })
       .then((res) => {
+        console.log(res);
         localStorage.setItem("jwt", res.token);
         setToken(localStorage.getItem("jwt"));
+        setCurrentUser(res);
         setIsLoggedIn(true);
       })
       .then(() => handleCloseModal())
@@ -72,10 +74,12 @@ function App() {
   };
 
   const handleDeleteCard = (selectedCard) => {
-    deleteClothingItems(selectedCard)
+    console.log(selectedCard._id);
+    deleteClothingItems(selectedCard._id)
       .then(() => {
         const newClothingItems = clothingItems.filter((cards) => {
-          return cards.id !== selectedCard.id;
+          console.log(cards.id);
+          return cards.id !== selectedCard._id;
         });
         setClothingItems(newClothingItems);
         handleCloseModal();
@@ -89,8 +93,8 @@ function App() {
       setToken(jwt);
       authorizeToken(jwt)
         .then((res) => {
-          setIsLoggedIn(true);
           setCurrentUser(res);
+          setIsLoggedIn(true);
         })
         .catch((err) => console.error("Invalid token: ", err));
     }
