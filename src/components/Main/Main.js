@@ -7,11 +7,8 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 
 function Main({ onSelectCard, weatherTemp, weatherId, clothingItems }) {
   const { currentTemperatureUnit } = React.useContext(CurrentTemperatureUnitContext);
-  console.log(weatherTemp.temperature);
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || "";
   const filteredCards = clothingItems.filter((item) => {
-    console.log(item.weather);
-    console.log(item._id);
     return item.weather.toLowerCase() === getWeatherTempRange(temp, currentTemperatureUnit);
   });
 

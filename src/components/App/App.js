@@ -59,8 +59,8 @@ function App() {
 
   const handleSignOut = () => {
     setToken(localStorage.removeItem("jwt"));
-    setIsLoggedIn(true);
     setCurrentUser(null);
+    setIsLoggedIn(true);
   };
 
   const handleAddItemSubmit = (values) => {

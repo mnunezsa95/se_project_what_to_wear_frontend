@@ -10,6 +10,7 @@ function Header({ onCreateModal, currentLocation = "Location N/A", isLoggedIn, o
   const currentUser = useContext(CurrentUserContext);
   const userAvatar = currentUser ? currentUser.avatar : "";
   const userName = currentUser ? currentUser.name : null;
+  const showAvatar = userAvatar !== "" ? true : false;
 
   return (
     <header className="header">
@@ -34,7 +35,11 @@ function Header({ onCreateModal, currentLocation = "Location N/A", isLoggedIn, o
                 <Link to="/profile">
                   <div className="header__nav-link">
                     {userName}
-                    <img src={userAvatar} alt="Profile Avatar" className="header__nav-avatar" />
+                    {showAvatar ? (
+                      <img className="sidebar__avatar" src={userAvatar} alt="User Avatar" />
+                    ) : (
+                      <p className="sidebar__avatar-placeholder">{userName[0].toUpperCase()}</p>
+                    )}
                   </div>
                 </Link>
               </li>

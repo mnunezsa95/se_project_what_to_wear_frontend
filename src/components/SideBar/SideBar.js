@@ -12,11 +12,16 @@ function SideBar({ onSignOut }) {
     onSignOut();
     history.push("/");
   };
+  const showAvatar = userAvatar !== "" ? true : false;
 
   return (
     <div className="sidebar__container">
       <div className="sidebar__container-info">
-        <img src={userAvatar} alt="Profile Avatar" className="sidebar__avatar" />
+        {showAvatar ? (
+          <img className="sidebar__avatar" src={userAvatar} alt="User Avatar" />
+        ) : (
+          <p className="sidebar__avatar-placeholder">{userName[0].toUpperCase()}</p>
+        )}
         <p className="sidebar_profile-name">{userName}</p>
       </div>
       <div className="sidebar__container-buttons">
