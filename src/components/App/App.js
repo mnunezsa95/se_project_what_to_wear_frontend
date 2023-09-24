@@ -57,6 +57,12 @@ function App() {
       .catch((err) => console.error(err));
   };
 
+  const handleSignOut = () => {
+    setToken(localStorage.removeItem("jwt"));
+    setIsLoggedIn(true);
+    setCurrentUser(null);
+  };
+
   const handleAddItemSubmit = (values) => {
     postClothingItems(values)
       .then((data) => {
@@ -113,9 +119,7 @@ function App() {
       .then((data) => {
         setClothingItems(data);
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch((error) => console.error(error));
   }, []);
 
   return (
@@ -136,7 +140,7 @@ function App() {
               </Route>
               <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
                 <Route path="/profile">
-                  <Profile onSelectCard={handleSelectedCard} clothingItems={clothingItems} onCreateModal={handleCreateModal} />
+                  <Profile onSelectCard={handleSelectedCard} clothingItems={clothingItems} onCreateModal={handleCreateModal} onSignOut={handleSignOut} />
                 </Route>
               </ProtectedRoute>
             </Switch>
