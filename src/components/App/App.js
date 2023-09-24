@@ -10,11 +10,12 @@ import RegisterModal from "../RegisterModal/RegisterModal.js";
 import LoginModal from "../LoginModal/LoginModal.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 import { getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from "../../utils/weatherAPI.js";
-import { fetchClothingItems, postClothingItems, deleteClothingItems } from "../../utils/api.js";
+import { editUserProfile, fetchClothingItems, postClothingItems, deleteClothingItems } from "../../utils/api.js";
 import { signUp, signIn, authorizeToken } from "../../utils/auth.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import "./App.css";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.js";
 
 function App() {
   const [temp, setTemp] = useState(0);
@@ -31,6 +32,7 @@ function App() {
   const handleLoginModal = () => setActiveModal("login");
   const handleRegisterModal = () => setActiveModal("register");
   const handleCreateModal = () => setActiveModal("create");
+  const handleEditModal = () => setActiveModal("edit");
   const handleCloseModal = () => setActiveModal(null);
   const handleToggleSwitchChange = () => (currentTemperatureUnit === "C" ? setCurrentTemperatureUnit("F") : setCurrentTemperatureUnit("C"));
 
@@ -55,6 +57,13 @@ function App() {
       })
       .then(() => handleCloseModal())
       .catch((err) => console.error(err));
+  };
+
+  const handleEditProfile = (data) => {
+    editUserProfile(data)
+      .then((res) => setCurrentUser(res))
+      .then(() => handleCloseModal())
+      .catch((err) => console.error("Error editing profile:", err));
   };
 
   const handleSignOut = () => {
@@ -140,7 +149,14 @@ function App() {
               </Route>
               <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
                 <Route path="/profile">
-                  <Profile onSelectCard={handleSelectedCard} clothingItems={clothingItems} onCreateModal={handleCreateModal} onSignOut={handleSignOut} />
+                  <Profile
+                    onSelectCard={handleSelectedCard}
+                    clothingItems={clothingItems}
+                    onCreateModal={handleCreateModal}
+                    onSignOut={handleSignOut}
+                    onEditModal={handleEditModal}
+                    onEditProfile={handleEditProfile}
+                  />
                 </Route>
               </ProtectedRoute>
             </Switch>
@@ -158,6 +174,7 @@ function App() {
             {activeModal === "login" && (
               <LoginModal isOpen={activeModal === "login"} handleCloseModal={handleCloseModal} onRegisterModal={handleRegisterModal} onSubmit={handleSignIn} />
             )}
+            {activeModal === "edit" && <EditProfileModal isOpen={activeModal === "edit"} handleCloseModal={handleCloseModal} onSubmit={handleEditProfile} />}
           </div>
         </CurrentTemperatureUnitContext.Provider>
       </div>
