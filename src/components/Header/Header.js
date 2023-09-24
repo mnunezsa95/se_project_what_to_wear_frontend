@@ -38,7 +38,7 @@ function Header({ onCreateModal, currentLocation = "Location N/A", isLoggedIn, o
                     {showAvatar ? (
                       <img className="sidebar__avatar" src={userAvatar} alt="User Avatar" />
                     ) : (
-                      <p className="sidebar__avatar-placeholder">{userName[0].toUpperCase()}</p>
+                      <p className="sidebar__avatar-placeholder">{userName[0]?.toUpperCase()}</p>
                     )}
                   </div>
                 </Link>

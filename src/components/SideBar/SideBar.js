@@ -20,7 +20,7 @@ function SideBar({ onSignOut }) {
         {showAvatar ? (
           <img className="sidebar__avatar" src={userAvatar} alt="User Avatar" />
         ) : (
-          <p className="sidebar__avatar-placeholder">{userName[0].toUpperCase()}</p>
+          <p className="sidebar__avatar-placeholder">{userName[0]?.toUpperCase()}</p>
         )}
         <p className="sidebar_profile-name">{userName}</p>
       </div>
