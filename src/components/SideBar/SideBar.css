@@ -19,6 +19,8 @@
 
 .sidebar__avatar {
   padding-right: 16px;
+  max-width: 40px;
+  max-height: 40px;
 }
 
 .sidebar_profile-name {
@@ -27,6 +29,7 @@
   font-size: 20px;
   line-height: 1.2;
   font-weight: 700;
+  margin-top: 10px;
 }
 
 .sidebar__container-buttons {
