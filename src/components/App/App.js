@@ -101,12 +101,12 @@ function App() {
   const handleLikeClick = ({ _id, isLiked, user }) => {
     console.log(isLiked);
     console.log(_id);
-    isLiked
+    !isLiked
       ? addCardLike(_id)
-          .then((updatedCard) => setClothingItems((cards) => cards.map((card) => (card._id === _id ? updatedCard : card))))
+          .then((updatedCard) => setClothingItems((cards) => cards.map((card) => (card._id === _id ? updatedCard.item : card))))
           .catch((err) => console.log(err))
       : removeCardLike(_id)
-          .then((updatedCard) => setClothingItems((cards) => cards.map((card) => (card._id === _id ? updatedCard : card))))
+          .then((updatedCard) => setClothingItems((cards) => cards.map((card) => (card._id === _id ? updatedCard.item : card))))
           .catch((err) => console.log(err));
   };
 

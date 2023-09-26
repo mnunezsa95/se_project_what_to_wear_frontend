@@ -3,7 +3,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./ClothesSection.css";
 
-function ClothesSection({ onSelectCard, onCreateModal, clothingItems }) {
+function ClothesSection({ onSelectCard, onCreateModal, clothingItems, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
   const userId = currentUser._id;
   const serverCards = clothingItems.filter((item) => {
@@ -19,7 +19,7 @@ function ClothesSection({ onSelectCard, onCreateModal, clothingItems }) {
       </div>
       <div className="clothes__section-card-items">
         {serverCards.map((item) => (
-          <ItemCard item={item} key={item?.id ?? item?._id} onSelectCard={onSelectCard} /> // optional chaining as error safety net
+          <ItemCard item={item} key={item?.id ?? item?._id} onSelectCard={onSelectCard} onCardLike={onCardLike} /> // optional chaining as error safety net
         ))}
       </div>
     </div>
