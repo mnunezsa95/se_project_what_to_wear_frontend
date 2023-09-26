@@ -157,7 +157,14 @@ function App() {
             />
             <Switch>
               <Route exact path="/">
-                <Main onSelectCard={handleSelectedCard} weatherTemp={temp} weatherId={weatherId} clothingItems={clothingItems} onCardLike={handleLikeClick} />
+                <Main
+                  onSelectCard={handleSelectedCard}
+                  weatherTemp={temp}
+                  weatherId={weatherId}
+                  clothingItems={clothingItems}
+                  onCardLike={handleLikeClick}
+                  isLoggedIn={isLoggedIn}
+                />
               </Route>
               <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
                 <Route path="/profile">
@@ -169,6 +176,7 @@ function App() {
                     onEditModal={handleEditModal}
                     onEditProfile={handleEditProfile}
                     onCardLike={handleLikeClick}
+                    isLoggedIn={isLoggedIn}
                   />
                 </Route>
               </ProtectedRoute>

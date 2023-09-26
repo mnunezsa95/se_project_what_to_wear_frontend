@@ -52,3 +52,7 @@
 .card__like-button-inactive {
   background-image: url(../../images/like-button.svg);
 }
+
+.card__like-button-hidden {
+  visibility: hidden;
+}
