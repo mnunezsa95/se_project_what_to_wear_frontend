@@ -45,3 +45,25 @@ export function deleteClothingItems(selectedCard) {
   }).then(checkServerResponse);
   return deleteItems;
 }
+
+export function addCardLike(itemId) {
+  const likeItems = fetch(`${BASE_URL}/items/${itemId}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+  }).then(checkServerResponse);
+  return likeItems;
+}
+
+export function removeCardLike(itemId) {
+  const dislikeItems = fetch(`${BASE_URL}/items/${itemId}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+  }).then(checkServerResponse);
+  return dislikeItems;
+}

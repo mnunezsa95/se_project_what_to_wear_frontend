@@ -9,13 +9,13 @@ import ItemModal from "../ItemModal/ItemModal.js";
 import RegisterModal from "../RegisterModal/RegisterModal.js";
 import LoginModal from "../LoginModal/LoginModal.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.js";
 import { getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from "../../utils/weatherAPI.js";
-import { editUserProfile, fetchClothingItems, postClothingItems, deleteClothingItems } from "../../utils/api.js";
+import { editUserProfile, fetchClothingItems, postClothingItems, deleteClothingItems, addCardLike, removeCardLike } from "../../utils/api.js";
 import { signUp, signIn, authorizeToken } from "../../utils/auth.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import "./App.css";
-import EditProfileModal from "../EditProfileModal/EditProfileModal.js";
 
 function App() {
   const [temp, setTemp] = useState(0);
@@ -98,6 +98,16 @@ function App() {
       .catch((error) => console.error(error));
   };
 
+  const handleLikeClick = ({ itemId, isLiked, user }) => {
+    isLiked
+      ? addCardLike(itemId)
+          .then((updatedCard) => setClothingItems((cards) => cards.map((card) => (card._id === itemId ? updatedCard : card))))
+          .catch((err) => console.log(err))
+      : removeCardLike(itemId)
+          .then((updatedCard) => setClothingItems((cards) => cards.map((card) => (card._id === itemId ? updatedCard : card))))
+          .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
@@ -145,7 +155,7 @@ function App() {
             />
             <Switch>
               <Route exact path="/">
-                <Main onSelectCard={handleSelectedCard} weatherTemp={temp} weatherId={weatherId} clothingItems={clothingItems} />
+                <Main onSelectCard={handleSelectedCard} weatherTemp={temp} weatherId={weatherId} clothingItems={clothingItems} onCardLike={handleLikeClick} />
               </Route>
               <ProtectedRoute path="/profile" isLoggedIn={isLoggedIn}>
                 <Route path="/profile">
@@ -156,6 +166,7 @@ function App() {
                     onSignOut={handleSignOut}
                     onEditModal={handleEditModal}
                     onEditProfile={handleEditProfile}
+                    onCardLike={handleLikeClick}
                   />
                 </Route>
               </ProtectedRoute>

@@ -40,11 +40,15 @@
 .card__like-button {
   width: 18px;
   height: 15px;
-  background-image: url(../../images/like-button.svg);
+  background-image: url(../../images/like-button-black.svg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   margin-left: 10px;
   border: none;
   cursor: pointer;
+}
+
+.card__like-button-inactive {
+  background-image: url(../../images/like-button.svg);
 }
