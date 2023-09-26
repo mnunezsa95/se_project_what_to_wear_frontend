@@ -5,13 +5,12 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 function ItemCard({ item, onSelectCard, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
   const cardId = item._id;
-  console.log(cardId);
   const userId = currentUser ? currentUser._id : "";
-  console.log(userId);
   const isLiked = item.likes.some((id) => id === currentUser._id);
   const likeButtonClass = isLiked ? "card__like-button" : "card__like-button card__like-button-inactive";
   const handleLikeClick = () => {
-    onCardLike({ id: cardId, isLiked: isLiked, user: userId });
+    onCardLike({ _id: cardId, isLiked: isLiked, user: userId });
+    console.log(cardId, isLiked, userId);
   };
 
   return (

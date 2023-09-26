@@ -99,6 +99,8 @@ function App() {
   };
 
   const handleLikeClick = ({ itemId, isLiked, user }) => {
+    console.log(isLiked);
+    console.log(itemId);
     isLiked
       ? addCardLike(itemId)
           .then((updatedCard) => setClothingItems((cards) => cards.map((card) => (card._id === itemId ? updatedCard : card))))
