@@ -98,15 +98,15 @@ function App() {
       .catch((error) => console.error(error));
   };
 
-  const handleLikeClick = ({ itemId, isLiked, user }) => {
+  const handleLikeClick = ({ _id, isLiked, user }) => {
     console.log(isLiked);
-    console.log(itemId);
+    console.log(_id);
     isLiked
-      ? addCardLike(itemId)
-          .then((updatedCard) => setClothingItems((cards) => cards.map((card) => (card._id === itemId ? updatedCard : card))))
+      ? addCardLike(_id)
+          .then((updatedCard) => setClothingItems((cards) => cards.map((card) => (card._id === _id ? updatedCard : card))))
           .catch((err) => console.log(err))
-      : removeCardLike(itemId)
-          .then((updatedCard) => setClothingItems((cards) => cards.map((card) => (card._id === itemId ? updatedCard : card))))
+      : removeCardLike(_id)
+          .then((updatedCard) => setClothingItems((cards) => cards.map((card) => (card._id === _id ? updatedCard : card))))
           .catch((err) => console.log(err));
   };
 
