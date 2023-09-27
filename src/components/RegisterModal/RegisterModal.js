@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 
-function RegisterModal({ handleCloseModal, isOpen, buttonText = "Next", onLoginModal, onSubmit }) {
+function RegisterModal({ handleCloseModal, isOpen, onLoginModal, onSubmit }) {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [nameValue, setNameValue] = useState("");
@@ -20,7 +20,16 @@ function RegisterModal({ handleCloseModal, isOpen, buttonText = "Next", onLoginM
   };
 
   return (
-    <ModalWithForm title="Register" onClose={handleCloseModal} isOpen={isOpen} onSubmit={handleSubmit}>
+    <ModalWithForm
+      title="Register"
+      onClose={handleCloseModal}
+      isOpen={isOpen}
+      onSubmit={handleSubmit}
+      buttonText="Next"
+      hasRedirectButton={true}
+      redirectButtonText="or Login"
+      redirectButtonClick={onLoginModal}
+    >
       <div className="form__container-inputs">
         <label className="form__label">
           Email
@@ -58,14 +67,6 @@ function RegisterModal({ handleCloseModal, isOpen, buttonText = "Next", onLoginM
           Avatar
           <input className="form__input-text" name="avatar" type="url" placeholder="Image Url" required value={avatarValue} onChange={handleAvatarChange} />
         </label>
-        <div>
-          <button className="modal__submit-button" type="submit">
-            {buttonText}
-          </button>
-          <button className="modal__login-button" type="button" onClick={onLoginModal}>
-            or login
-          </button>
-        </div>
       </div>
     </ModalWithForm>
   );

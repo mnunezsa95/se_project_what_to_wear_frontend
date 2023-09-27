@@ -7,13 +7,13 @@
   position: relative;
   display: flex;
   justify-content: center;
-  width: 310px;
-  height: 310px;
 }
 
 .card__image {
-  max-width: 328px;
-  max-height: 328px;
+  width: 325px;
+  height: 325px;
+  max-width: 330px;
+  max-height: 330px;
   border-radius: 20px;
 }
 

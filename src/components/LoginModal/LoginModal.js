@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
-function LoginModal({ handleCloseModal, isOpen, onLogin, buttonText = "Log in", onRegisterModal, onSubmit }) {
+function LoginModal({ handleCloseModal, isOpen, onLogin, onRegisterModal, onSubmit }) {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
 
@@ -16,7 +16,16 @@ function LoginModal({ handleCloseModal, isOpen, onLogin, buttonText = "Log in", 
   };
 
   return (
-    <ModalWithForm title="Login" onClose={handleCloseModal} onSubmit={handleSubmit} isOpen={isOpen}>
+    <ModalWithForm
+      title="Login"
+      onClose={handleCloseModal}
+      onSubmit={handleSubmit}
+      isOpen={isOpen}
+      buttonText="Login"
+      hasRedirectButton={true}
+      redirectButtonText="or Register"
+      redirectButtonClick={onRegisterModal}
+    >
       <div className="form__container-inputs">
         <label className="form__label">
           Email
@@ -36,15 +45,6 @@ function LoginModal({ handleCloseModal, isOpen, onLogin, buttonText = "Log in", 
             onChange={handlePasswordChange}
           />
         </label>
-
-        <div>
-          <button className="modal__submit-button" type="submit" name="button">
-            {buttonText}
-          </button>
-          <button className="modal__register-button" type="button" onClick={onRegisterModal}>
-            or Register
-          </button>
-        </div>
       </div>
     </ModalWithForm>
   );
