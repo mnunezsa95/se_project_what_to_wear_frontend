@@ -23,10 +23,11 @@ function App() {
   const [weatherId, setweatherId] = useState(800);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [activeModal, setActiveModal] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-  const [currentUser, setCurrentUser] = React.useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = React.useState("");
 
   const handleLoginModal = () => setActiveModal("login");
@@ -37,17 +38,22 @@ function App() {
   const handleToggleSwitchChange = () => (currentTemperatureUnit === "C" ? setCurrentTemperatureUnit("F") : setCurrentTemperatureUnit("C"));
 
   const handleRegistration = ({ emailValue, passwordValue, nameValue, avatarValue }) => {
+    setIsLoading(true);
     signUp({ email: emailValue, password: passwordValue, name: nameValue, avatar: avatarValue })
       .then((res) => {
         setCurrentUser(res);
         handleSignIn({ emailValue, passwordValue });
         setIsLoggedIn(true);
-        setActiveModal(null);
+      })
+      .then(() => {
+        setIsLoading(false);
+        handleCloseModal();
       })
       .catch((err) => console.error(err));
   };
 
   const handleSignIn = ({ emailValue, passwordValue }) => {
+    setIsLoading(true);
     signIn({ email: emailValue, password: passwordValue })
       .then((res) => {
         localStorage.setItem("jwt", res.token);
@@ -55,14 +61,21 @@ function App() {
         setCurrentUser(res);
         setIsLoggedIn(true);
       })
-      .then(() => handleCloseModal())
+      .then(() => {
+        setIsLoading(false);
+        handleCloseModal();
+      })
       .catch((err) => console.error(err));
   };
 
   const handleEditProfile = (data) => {
+    setIsLoading(true);
     editUserProfile(data)
       .then((res) => setCurrentUser(res))
-      .then(() => handleCloseModal())
+      .then(() => {
+        setIsLoading(false);
+        handleCloseModal();
+      })
       .catch((err) => console.error("Error editing profile:", err));
   };
 
@@ -73,9 +86,11 @@ function App() {
   };
 
   const handleAddItemSubmit = (values) => {
+    setIsLoading(true);
     postClothingItems(values)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
+        setIsLoading(false);
         handleCloseModal();
       })
       .catch((error) => console.error(error));
@@ -143,6 +158,19 @@ function App() {
       .catch((error) => console.error(error));
   }, []);
 
+  useEffect(() => {
+    if (!activeModal) return;
+    const handleEscClose = (evt) => {
+      if (evt.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+    document.addEventListener("keydown", handleEscClose);
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -177,12 +205,15 @@ function App() {
                     onEditProfile={handleEditProfile}
                     onCardLike={handleLikeClick}
                     isLoggedIn={isLoggedIn}
+                    isLoading={isLoading}
                   />
                 </Route>
               </ProtectedRoute>
             </Switch>
             <Footer />
-            {activeModal === "create" && <AddItemModal handleCloseModal={handleCloseModal} isOpen={activeModal === "create"} onAddItem={handleAddItemSubmit} />}
+            {activeModal === "create" && (
+              <AddItemModal handleCloseModal={handleCloseModal} isOpen={activeModal === "create"} onAddItem={handleAddItemSubmit} isLoading={isLoading} />
+            )}
             {activeModal === "preview" && <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} handleDeleteCard={handleDeleteCard} />}
             {activeModal === "register" && (
               <RegisterModal
@@ -190,12 +221,21 @@ function App() {
                 handleCloseModal={handleCloseModal}
                 onLoginModal={handleLoginModal}
                 onSubmit={handleRegistration}
+                isLoading={isLoading}
               />
             )}
             {activeModal === "login" && (
-              <LoginModal isOpen={activeModal === "login"} handleCloseModal={handleCloseModal} onRegisterModal={handleRegisterModal} onSubmit={handleSignIn} />
+              <LoginModal
+                isOpen={activeModal === "login"}
+                handleCloseModal={handleCloseModal}
+                onRegisterModal={handleRegisterModal}
+                onSubmit={handleSignIn}
+                isLoading={isLoading}
+              />
             )}
-            {activeModal === "edit" && <EditProfileModal isOpen={activeModal === "edit"} handleCloseModal={handleCloseModal} onSubmit={handleEditProfile} />}
+            {activeModal === "edit" && (
+              <EditProfileModal isOpen={activeModal === "edit"} handleCloseModal={handleCloseModal} onSubmit={handleEditProfile} isLoading={isLoading} />
+            )}
           </div>
         </CurrentTemperatureUnitContext.Provider>
       </div>

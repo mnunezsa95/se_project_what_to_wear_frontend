@@ -2,7 +2,7 @@ import { React, useContext, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function EditProfileModal({ handleCloseModal, isOpen, onSubmit }) {
+function EditProfileModal({ handleCloseModal, isOpen, onSubmit, isLoading }) {
   const currentUser = useContext(CurrentUserContext);
   const [nameValue, setNameValue] = useState(currentUser.name);
   const [avatarValue, setAvatarValue] = useState(currentUser.avatar);
@@ -15,7 +15,7 @@ function EditProfileModal({ handleCloseModal, isOpen, onSubmit }) {
   };
 
   return (
-    <ModalWithForm title="Change profile data" onClose={handleCloseModal} isOpen={isOpen} onSubmit={handleSubmit} buttonText="Save changes">
+    <ModalWithForm title="Change profile data" onClose={handleCloseModal} isOpen={isOpen} onSubmit={handleSubmit} buttonText={isLoading ? "Saving..." : "Save"}>
       <div className="form__container-inputs">
         <label className="form__label">
           Name

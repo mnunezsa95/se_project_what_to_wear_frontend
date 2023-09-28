@@ -2,7 +2,7 @@ import React from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./AddItemModal.css";
 
-function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
+function AddItemModal({ handleCloseModal, onAddItem, isOpen, isLoading }) {
   const [name, setName] = React.useState("");
   const [imageUrl, setImageUrl] = React.useState("");
   const [weatherTypeInput, setWeatherTypeInput] = React.useState("");
@@ -34,7 +34,7 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen }) {
   }
 
   return (
-    <ModalWithForm title="New garment" buttonText="Add Garment" onClose={handleCloseModal} isOpen={isOpen} onSubmit={handleSubmit}>
+    <ModalWithForm title="New garment" buttonText={isLoading ? "Adding..." : "Add Garment"} onClose={handleCloseModal} isOpen={isOpen} onSubmit={handleSubmit}>
       <div className="form__container-inputs">
         <label className="form__label">
           Name

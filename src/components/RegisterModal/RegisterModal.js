@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 
-function RegisterModal({ handleCloseModal, isOpen, onLoginModal, onSubmit }) {
+function RegisterModal({ handleCloseModal, isOpen, onLoginModal, onSubmit, isLoading }) {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [nameValue, setNameValue] = useState("");
@@ -25,7 +25,7 @@ function RegisterModal({ handleCloseModal, isOpen, onLoginModal, onSubmit }) {
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
-      buttonText="Next"
+      buttonText={isLoading ? "Signing up..." : "Next"}
       hasRedirectButton={true}
       redirectButtonText="or Login"
       redirectButtonClick={onLoginModal}
