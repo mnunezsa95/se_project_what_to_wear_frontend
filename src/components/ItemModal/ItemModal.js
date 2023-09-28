@@ -6,8 +6,6 @@ function ItemModal({ selectedCard, onClose, handleDeleteCard }) {
   const userContext = useContext(CurrentUserContext);
   const userData = userContext ? userContext : { name: "n/a", avatar: "" };
   const isOwn = selectedCard.owner === userData._id;
-  console.log(selectedCard.owner);
-  console.log(isOwn);
 
   const itemDeleteButtonClassName = isOwn ? "modal__delete-button" : "modal__delete-button_hidden";
   return (

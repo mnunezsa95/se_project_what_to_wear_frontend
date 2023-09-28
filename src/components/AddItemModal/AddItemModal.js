@@ -48,15 +48,21 @@ function AddItemModal({ handleCloseModal, onAddItem, isOpen, isLoading }) {
       <p className="form__prompt">Select the weather type:</p>
       <div className="form__container-selections">
         <input className="form__input-selector" name="weatherRadioInput" type="radio" id="hot" value="hot" onChange={handleWeatherInputChange} />
-        <label className="form__label-selector">Hot</label>
+        <label className="form__label-selector" htmlFor="hot">
+          Hot
+        </label>
       </div>
       <div className="form__container-selections">
         <input className="form__input-selector" name="weatherRadioInput" type="radio" id="warm" value="warm" onChange={handleWeatherInputChange} />
-        <label className="form__label-selector">Warm</label>
+        <label className="form__label-selector" htmlFor="warm">
+          Warm
+        </label>
       </div>
       <div className="form__container-selections">
         <input className="form__input-selector" name="weatherRadioInput" type="radio" id="cold" value="cold" onChange={handleWeatherInputChange} />
-        <label className="form__label-selector">Cold</label>
+        <label className="form__label-selector" htmlFor="cold">
+          Cold
+        </label>
       </div>
     </ModalWithForm>
   );

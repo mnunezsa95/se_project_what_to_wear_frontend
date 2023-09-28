@@ -45,11 +45,9 @@ function App() {
         handleSignIn({ emailValue, passwordValue });
         setIsLoggedIn(true);
       })
-      .then(() => {
-        setIsLoading(false);
-        handleCloseModal();
-      })
-      .catch((err) => console.error(err));
+      .then(() => handleCloseModal())
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
   };
 
   const handleSignIn = ({ emailValue, passwordValue }) => {
@@ -61,22 +59,18 @@ function App() {
         setCurrentUser(res);
         setIsLoggedIn(true);
       })
-      .then(() => {
-        setIsLoading(false);
-        handleCloseModal();
-      })
-      .catch((err) => console.error(err));
+      .then(() => handleCloseModal())
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false)); // sets isLoading to false() regardless of wether the log in successful or not
   };
 
   const handleEditProfile = (data) => {
     setIsLoading(true);
     editUserProfile(data)
       .then((res) => setCurrentUser(res))
-      .then(() => {
-        setIsLoading(false);
-        handleCloseModal();
-      })
-      .catch((err) => console.error("Error editing profile:", err));
+      .then(() => handleCloseModal())
+      .catch((err) => console.error(err))
+      .finally(() => setIsLoading(false));
   };
 
   const handleSignOut = () => {
@@ -90,10 +84,10 @@ function App() {
     postClothingItems(values)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
-        setIsLoading(false);
         handleCloseModal();
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .finally(() => setIsLoading(false));
   };
 
   const handleSelectedCard = (card) => {

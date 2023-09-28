@@ -1,7 +1,7 @@
 export const BASE_URL = "http://localhost:3001";
 
 export const checkServerResponse = (res) => {
-  if (!res.ok) return Promise.reject(`Error: ${res.status}`);
+  if (!res.ok) return Promise.reject(`An error with the Status Code ${res.status} has occurred`);
   return res.json();
 };
 
