@@ -5,6 +5,20 @@ const APIkey = "983235a5906c56236bf8fd16494d2b24";
 const latitude = 42.3574;
 const longitude = -71.0598;
 
+export const getCurrentUserLocation = () => {
+  return fetch("https://api.geoapify.com/v1/ipinfo?apiKey=805431c8bb0d47bf91696ba759b399b3")
+    .then(checkServerResponse)
+    .then((data) => {
+      console.log(data);
+      const { latitude } = data.location;
+      const { longitude } = data.location;
+      console.log(latitude, longitude);
+      return { latitude, longitude };
+    });
+};
+
+getCurrentUserLocation();
+
 export const getWeatherForcast = () => {
   const weatherAPI = fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`).then(
     checkServerResponse
