@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import "./Header.css";
 import headerLogo from "../../images/logo2.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import "./Header.css";
 
 function Header({ onCreateModal, currentLocation = "Location N/A", isLoggedIn, onRegisterModal, onLoginModal }) {
   const currentDate = new Date().toLocaleDateString("default", { year: "numeric", month: "long", day: "numeric" });

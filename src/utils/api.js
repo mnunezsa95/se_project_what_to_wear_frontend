@@ -13,17 +13,16 @@ export function editUserProfile(name, avatar) {
 }
 
 export function fetchClothingItems() {
-  const getItems = fetch(`${BASE_URL}/items`, {
+  return fetch(`${BASE_URL}/items`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   }).then(checkServerResponse);
-  return getItems;
 }
 
 export function postClothingItems({ name, imageUrl, weatherTypeInput }) {
-  const postItems = fetch(`${BASE_URL}/items`, {
+  return fetch(`${BASE_URL}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -31,39 +30,34 @@ export function postClothingItems({ name, imageUrl, weatherTypeInput }) {
     },
     body: JSON.stringify({ name, imageUrl, weather: weatherTypeInput }),
   }).then(checkServerResponse);
-
-  return postItems;
 }
 
 export function deleteClothingItems(selectedCard) {
-  const deleteItems = fetch(`${BASE_URL}/items/${selectedCard}`, {
+  return fetch(`${BASE_URL}/items/${selectedCard}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
   }).then(checkServerResponse);
-  return deleteItems;
 }
 
 export function addCardLike(itemId) {
-  const likeItems = fetch(`${BASE_URL}/items/${itemId}/likes`, {
+  return fetch(`${BASE_URL}/items/${itemId}/likes`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
   }).then(checkServerResponse);
-  return likeItems;
 }
 
 export function removeCardLike(itemId) {
-  const dislikeItems = fetch(`${BASE_URL}/items/${itemId}/likes`, {
+  return fetch(`${BASE_URL}/items/${itemId}/likes`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${localStorage.getItem("jwt")}`,
     },
   }).then(checkServerResponse);
-  return dislikeItems;
 }

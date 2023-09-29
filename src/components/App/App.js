@@ -61,7 +61,7 @@ function App() {
       })
       .then(() => handleCloseModal())
       .catch((err) => console.error(err))
-      .finally(() => setIsLoading(false)); // sets isLoading to false() regardless of wether the log in successful or not
+      .finally(() => setIsLoading(false));
   };
 
   const handleEditProfile = (data) => {
@@ -98,9 +98,7 @@ function App() {
   const handleDeleteCard = (selectedCard) => {
     deleteClothingItems(selectedCard._id)
       .then(() => {
-        const newClothingItems = clothingItems.filter((cards) => {
-          return cards._id !== selectedCard._id;
-        });
+        const newClothingItems = clothingItems.filter((cards) => cards._id !== selectedCard._id);
         setClothingItems(newClothingItems);
         handleCloseModal();
       })
@@ -146,9 +144,7 @@ function App() {
 
   useEffect(() => {
     fetchClothingItems()
-      .then((data) => {
-        setClothingItems(data);
-      })
+      .then((data) => setClothingItems(data))
       .catch((error) => console.error(error));
   }, []);
 
