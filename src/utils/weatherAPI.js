@@ -53,7 +53,7 @@ export function getWeatherTempRange(temperature, currentTempatureUnit) {
       return "warm";
     } else if (temperature <= ((65 - 32) * 5) / 9) {
       return "cold";
-    } // When I toggle my switch on my end, I continue seeing the items. I even tried this from a different computer & an incognito window.
+    }
   }
 }
 
