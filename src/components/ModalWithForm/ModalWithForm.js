@@ -12,7 +12,7 @@ function ModalWithForm({ children, modalName, title, buttonText, onClose, isOpen
             {buttonText}
           </button>
           {hasRedirectButton && (
-            <button className="modal__redirect-button" onClick={redirectButtonClick}>
+            <button className="modal__redirect-button" onClick={redirectButtonClick} type="submit">
               {redirectButtonText}
             </button>
           )}
