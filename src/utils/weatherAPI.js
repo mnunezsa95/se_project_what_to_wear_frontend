@@ -21,6 +21,10 @@ export const getWeatherForcast = (location) => {
   return weatherAPI;
 };
 
+export function getLocationCity(data) {
+  return data.name;
+}
+
 export function getWeatherData(data) {
   const main = data.main;
   const temperature = main && main.temp;
@@ -59,8 +63,4 @@ export function getWeatherId(data) {
     return item.id;
   });
   return weatherIdArray.length > 0 ? weatherIdArray[0] : 800;
-}
-
-export function getLocationData(data) {
-  return data.name;
 }

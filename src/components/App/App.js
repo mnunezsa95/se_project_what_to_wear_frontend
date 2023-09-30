@@ -10,7 +10,7 @@ import RegisterModal from "../RegisterModal/RegisterModal.js";
 import LoginModal from "../LoginModal/LoginModal.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 import EditProfileModal from "../EditProfileModal/EditProfileModal.js";
-import { getCurrentUserLocation, getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from "../../utils/weatherAPI.js";
+import { getCurrentUserLocation, getWeatherForcast, getWeatherData, getLocationCity, getWeatherId } from "../../utils/weatherAPI.js";
 import { editUserProfile, fetchClothingItems, postClothingItems, deleteClothingItems, addCardLike, removeCardLike } from "../../utils/api.js";
 import { signUp, signIn, authorizeToken } from "../../utils/auth.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
@@ -135,8 +135,8 @@ function App() {
         getWeatherForcast(location).then((data) => {
           const tempFromAPI = getWeatherData(data);
           setTemp(tempFromAPI);
-          const locationFromAPI = getLocationData(data);
-          setLocation(locationFromAPI);
+          const cityFromAPI = getLocationCity(data);
+          setLocation(cityFromAPI);
           setweatherId(getWeatherId(data));
         });
       })
