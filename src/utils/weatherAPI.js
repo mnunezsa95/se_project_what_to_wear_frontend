@@ -46,15 +46,14 @@ export function getWeatherTempRange(temperature, currentTempatureUnit) {
     } else if (temperature <= 65) {
       return "cold";
     }
-  }
-  if (currentTempatureUnit === "C") {
+  } else {
     if (temperature > ((86 - 32) * 5) / 9) {
       return "hot";
     } else if ((temperature >= (66 - 32) * 5) / 9 && temperature <= (85 - 32 * 5) / 9) {
       return "warm";
     } else if (temperature <= ((65 - 32) * 5) / 9) {
       return "cold";
-    } // I don't get the items disappearing
+    } // When I toggle my switch on my end, I continue seeing the items. I even tried this from a different computer & an incognito window.
   }
 }
 
