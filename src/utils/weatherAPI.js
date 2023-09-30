@@ -54,7 +54,7 @@ export function getWeatherTempRange(temperature, currentTempatureUnit) {
       return "warm";
     } else if (temperature <= ((65 - 32) * 5) / 9) {
       return "cold";
-    }
+    } // I don't get the items disappearing
   }
 }
 
