@@ -10,7 +10,7 @@ import RegisterModal from "../RegisterModal/RegisterModal.js";
 import LoginModal from "../LoginModal/LoginModal.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 import EditProfileModal from "../EditProfileModal/EditProfileModal.js";
-import { getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from "../../utils/weatherAPI.js";
+import { getCurrentUserLocation, getWeatherForcast, getWeatherData, getLocationData, getWeatherId } from "../../utils/weatherAPI.js";
 import { editUserProfile, fetchClothingItems, postClothingItems, deleteClothingItems, addCardLike, removeCardLike } from "../../utils/api.js";
 import { signUp, signIn, authorizeToken } from "../../utils/auth.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
@@ -106,15 +106,13 @@ function App() {
   };
 
   const handleLikeClick = ({ _id, isLiked, user }) => {
-    console.log(isLiked);
-    console.log(_id);
     !isLiked
       ? addCardLike(_id)
           .then((updatedCard) => setClothingItems((cards) => cards.map((card) => (card._id === _id ? updatedCard.item : card))))
-          .catch((err) => console.log(err))
+          .catch((err) => console.error(err))
       : removeCardLike(_id)
           .then((updatedCard) => setClothingItems((cards) => cards.map((card) => (card._id === _id ? updatedCard.item : card))))
-          .catch((err) => console.log(err));
+          .catch((err) => console.error(err));
   };
 
   useEffect(() => {
@@ -131,13 +129,16 @@ function App() {
   }, [token]);
 
   useEffect(() => {
-    getWeatherForcast()
-      .then((data) => {
-        const tempFromAPI = getWeatherData(data);
-        setTemp(tempFromAPI);
-        const locationFromAPI = getLocationData(data);
-        setLocation(locationFromAPI);
-        setweatherId(getWeatherId(data));
+    getCurrentUserLocation()
+      .then((location) => {
+        console.log(location);
+        getWeatherForcast(location).then((data) => {
+          const tempFromAPI = getWeatherData(data);
+          setTemp(tempFromAPI);
+          const locationFromAPI = getLocationData(data);
+          setLocation(locationFromAPI);
+          setweatherId(getWeatherId(data));
+        });
       })
       .catch((err) => console.error(err));
   }, []);
@@ -151,14 +152,10 @@ function App() {
   useEffect(() => {
     if (!activeModal) return;
     const handleEscClose = (evt) => {
-      if (evt.key === "Escape") {
-        handleCloseModal();
-      }
+      if (evt.key === "Escape") handleCloseModal();
     };
     document.addEventListener("keydown", handleEscClose);
-    return () => {
-      document.removeEventListener("keydown", handleEscClose);
-    };
+    return () => document.removeEventListener("keydown", handleEscClose);
   }, [activeModal]);
 
   return (
