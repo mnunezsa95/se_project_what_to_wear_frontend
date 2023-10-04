@@ -131,7 +131,6 @@ function App() {
   useEffect(() => {
     getCurrentUserLocation()
       .then((location) => {
-        console.log(location);
         getWeatherForcast(location).then((data) => {
           const tempFromAPI = getWeatherData(data);
           setTemp(tempFromAPI);
