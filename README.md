@@ -1,7 +1,5 @@
 # WTWR (What to Wear?)
 
-- [Link to Backend](https://github.com/mnunezsa95/se_project_express)
-
 ## Overview
 
 - Intro - About the project
@@ -24,7 +22,8 @@ Figma was used to map out the design for this single page application. The Figma
 
 ### Links
 
-The project is hosted on GitHub Pages and can be seen live using the this [link](https://mnunezsa95.github.io/se_project_react/).
-The API (OpenWeather) used in this application can be found by clicking on this [link](https://openweathermap.org/)
+- The project's backend can be found by using this [link](https://github.com/mnunezsa95/se_project_express)
+- The project is hosted on GitHub Pages and can be seen live using the this [link](https://www.wtwear.mooo.com/).
+- The API (OpenWeather) used in this application can be found by clicking on this [link](https://openweathermap.org/)
 
 ### Plans for Improvement
