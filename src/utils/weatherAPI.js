@@ -1,4 +1,3 @@
-// API Link: https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}
 import { checkServerResponse } from "../utils/constants.js";
 
 const APIkey = "983235a5906c56236bf8fd16494d2b24";
