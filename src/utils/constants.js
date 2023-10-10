@@ -1,4 +1,4 @@
-export const BASE_URL = process.env.NODE_ENV === "production" ? "deployed-backend-url" : "http://localhost:3001";
+export const BASE_URL = process.env.NODE_ENV === "production" ? "https://api.wtwear.mooo.com" : "http://localhost:3001";
 
 export const checkServerResponse = (res) => {
   if (!res.ok) return Promise.reject(`An error with the Status Code ${res.status} has occurred`);
