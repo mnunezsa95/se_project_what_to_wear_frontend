@@ -1,4 +1,4 @@
-# WTWR (What to Wear?)
+# WTWR (What to Wear?) (Frontend)
 
 ## Overview
 
