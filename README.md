@@ -40,8 +40,10 @@ Figma was employed to create the design for this single-page application, provid
 
 ### Demo Credentials
 
-Demo username: user1@gmail.com
-Demo password: user1
+Use the following credentials to test out the application
+
+- Demo username: user1@gmail.com
+- Demo password: user1
 
 ### Plans for Improvement
 
