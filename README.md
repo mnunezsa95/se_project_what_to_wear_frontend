@@ -55,3 +55,6 @@ Use the following credentials to test out the application
 
 3. User-Specific Clothing Data:
    Currently, the code displays all clothing data uploaded by all users. To address this, I intend to implement a feature that restricts users to seeing only their uploaded clothes. This change ensures privacy and a more personalized experience for each user.
+
+4. Search Feature:
+   Integrate a search feature enabling users to explore weather conditions in different locations, coupled with clothing recommendations tailored to the weather in the chosen destination. This enhancement will transform the app into a versatile tool for travel suggestions, ensuring users are well-prepared for varying climates.
