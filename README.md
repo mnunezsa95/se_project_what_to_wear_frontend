@@ -1,6 +1,6 @@
 # WTWR (What to Wear?) (Frontend)
 
-## Overview
+### Overview
 
 - Intro - About the project
 - Description of the Project
